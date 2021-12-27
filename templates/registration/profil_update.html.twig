@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    GamesProject | Modification Profil 
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+   
+
+    <h1 class="text-center my-5">Modification profil</h1>
+
+    {{ form_start(formUpdate, {'attr': {'class' : 'col-6 mx-auto'}} ) }}
+
+        {{ form_row(formUpdate.prenom) }}
+
+        {{ form_row(formUpdate.nom) }}
+
+        {{ form_row(formUpdate.email) }}
+
+        {{ form_row(formUpdate.pseudo) }}
+
+       
+
+        <button class="btn btn-outline-dark d-block col-2 mx-auto">Modifier</button>
+
+    {{ form_rest(formUpdate) }}
+    {{ form_end(formUpdate) }}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.admin.html.twig" %}
+
+{% block title %}
+    GamesProject | Gestion catégories
+{% endblock %}
+
+{% block body %}
+
+    {% for label, messages in app.flashes(['info', 'danger']) %}
+
+        {% for message in messages %}
+        
+
+            <div class="col-6 mx-auto text-center bg-{{ label }} p-3 text-white mb-3 mt-3">
+                {{ message }}
+            </div>
+            
+        {% endfor %}
+    {% endfor %}
+
+<div class="container-fluid">
+    <h1 class="text-center my-5"> Gestion catégories </h1>
+        <span class="fs-4">
+             Ajouter :  
+                <a href="{{ path('game_admin_categorie_add') }}" class="text-dark " style="text-decoration: none"> 
+                    <i class="bi bi-plus-circle-fill text-success"></i>
+                </a>
+         </span>
+        <table class ="table table-stripped text-center"> 
+            <thead>
+                <tr>
+                    {% for data in table %}
+                        {% if data != 'id' %}
+                            <th> {{ data|capitalize }} </th>
+                        {% endif %}
+                        
+                    {% endfor %}
+
+                    <th> Actions  </th>
+
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in categorie %}
+                    <tr class="align-middle">
+                        <td> {{ cat.nom }} </td>
+
+                        <td class= "d-flex flex-column"> 
+
+                            
+
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_categorie_edit', {'id': cat.id}) }}"><i class="bi bi-pencil-fill"></i></a>
+                            </span>
+
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_categorie_remove', {'id': cat.id}) }}" 
+                                onclick ="return(confirm('Voulez-vous réellement supprimer la catégorie n° {{cat.id }}'));">
+                                <i class="bi bi-trash-fill text-danger"></i></a>
+                            </span>
+                        
+                        </td>
+                    
+                    
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        
+        
+        </table>
+        
+</div>
+{% endblock %}

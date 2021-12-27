@@ -1,0 +1,63 @@
+{% extends 'base.forum.html.twig' %}
+
+{% block title %}
+  Retrolik | Forum
+{% endblock %}
+
+{% block body %}
+  <main class="d-flex flex-column flex-md-row justify-content-between mx-auto p-4" id="body_forum">
+    <div class="partie1 col-6">
+
+      {% if app.user %}
+        <span class="fs-4 text-white">
+          Créer un topic :  
+          <a href="{{ path('forum_add_article') }}" class="text-dark " style="text-decoration: none"> 
+            <i class="bi bi-plus-circle-fill text-success"></i>
+          </a>
+        </span>
+      {% endif %}
+
+
+      <table class="table text-center" id="table_forum">
+          <tr>
+            {% for data in table %}
+              {% if data != 'id' %}
+              {% if data != 'contenu' %}
+              
+                <th>
+                  {{ data|capitalize }} 
+                  
+                </th>
+              {% endif %}
+
+              {% endif %}
+
+            {% endfor %}
+
+          </tr>
+
+            {% for art in article %}
+
+          <tr>
+
+                <td><a href="{{ path('forum_show', {'id': art.id}) }}"> {{ art.titre }} </a></td>
+
+                <td>{{ art.auteur }}</td>
+
+                <td>{{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }}</td>
+
+          </tr>
+
+          {% endfor %}
+
+      </table>
+    </div>
+
+    <div class="partie2 col-6 h-100">
+      <p class="text-center text-white">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </p>
+    </div>
+
+  </main>
+{% endblock %}

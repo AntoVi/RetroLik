@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+{% block title0 %}
+    GamesProjet | Jeux
+{% endblock %}
+
+{% block body %}
+
+<body id="body_jeux">
+
+  <div class="card card_pacman mx-auto my-5" style="width: 18rem;">
+
+<div class="img_jeux mt-3 mx-4">
+  <a href=" {{ path('game_pacman') }}"><img class="card-img-top" src="../imgs/pacman.png" alt="Card image cap"></a>
+</div>
+
+    <div class="card-body">
+
+      <p class="textcard1 text-center">PacMan</p>
+
+    </div>
+  </div>
+
+
+  <div class="card card_snake mx-auto my-5" style="width: 18rem;">
+
+    <div class="img_jeux mt-3 mx-4">
+      <a href=" {{ path('game_snake') }}"><img class="card-img-top" src="../imgs/snake.png" alt="Card image cap"></a>
+    </div>
+
+    <div class="card-body">
+
+      <p class="textcard2 text-center">Snake</p>
+
+    </div>
+  </div>
+
+  <div class="card card_tictactoe mx-auto my-5" style="width: 18rem;">
+
+    <div class="img_jeux mt-3 mx-4">
+      <a href=" {{ path('game_tictac') }}"><img class="card-img-top" src="../imgs/tictactoe.png" alt="Card image cap"></a>
+    </div>
+
+    <div class="card-body">
+
+      <p class="textcard3 text-center">Tictactoe</p>
+
+    </div>
+  </div>
+
+</body>
+
+{% endblock %}

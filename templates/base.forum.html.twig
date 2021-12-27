@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Notre premier blog Symfony">
+        <meta name="generator" content="Mickaël">
+        <title>GamesProject</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/product/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+        <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+        <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+        <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+        <meta name="theme-color" content="#7952b3">
+
+       {# Script et link pour le login #}
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {#  #}
+
+        <!-- Icons Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+        <!-- CSS : base_forum.css -->
+         <link href="{{ asset('css/base_forum.css') }}" rel="stylesheet">
+
+        <title>
+            {% block title %}
+                Retrolik
+            {% endblock %}
+        </title>
+    </head>
+    <body class="body_base position-relative">
+        
+        {# Début de la nav #}
+
+        <header class="header-forum">
+
+            <nav id="navbar_forum" class="navbar navbar-expand-lg navbar-light bg-light py-3" aria-label="Twelfth navbar example">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link px-3 text-white" href="{{path('home')}}">Retrolik</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="px-3 text-white" href="{{ path('forum') }}"><i class="bi bi-house fs-5"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                {% if app.user %}
+                                    <a class="nav-link px-3 text-white" href="{{path('game_profil')}}">Profil</a>
+                                {% endif %}
+                            </li>
+                            <li class="nav-item">
+                                {% if app.user %}
+                                    <a class="nav-link px-3 text-white" href="{{path('app_logout')}}">Déconnexion</a>
+                                {% else %}
+                                    <a class="nav-link px-3 text-white" href="{{path('app_login')}}">Se connecter</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        {# Fin de la nav #}
+
+        {% block body %}
+
+        {% endblock %}
+
+       <footer class="footer py-3 w-100 position-absolute">
+        <div class="container d-flex justify-content-around text-white">
+          <div class="mx-3 text-center col-md-3 p-2">Retrolik &copy; 2021-2022</div>
+          <div class="mx-3 text-center col-md-3 p-2">Mentions légales</div>
+          <div class="mx-3 text-center col-md-3 p-2">CGU</div>
+          <div class="mx-3 text-center col-md-3">
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+      </footer>
+
+
+        {% block javascripts %}
+
+        {% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+

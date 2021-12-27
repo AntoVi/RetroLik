@@ -1,0 +1,91 @@
+{% extends "base.admin.html.twig" %}
+
+{% block title %}
+    GamesProject | Gestion jeux
+{% endblock %}
+
+{% block body %}
+
+    {% for label, messages in app.flashes(['info', 'danger']) %}
+
+        {% for message in messages %}
+        
+
+            <div class="col-6 mx-auto text-center bg-{{ label }} p-3 text-white mb-3 mt-3">
+                {{ message }}
+            </div>
+            
+        {% endfor %}
+    {% endfor %}
+
+    <div class="container-fluid"> 
+         <h1 class="text-center my-5"> Gestion jeux </h1>
+          <span class="fs-4">
+             Ajouter :  
+                <a href="{{ path('game_admin_jeux_add') }}" class="text-dark " style="text-decoration: none"> 
+                    <i class="bi bi-plus-circle-fill text-success"></i>
+                </a>
+         </span>
+         <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    {% for data in table %}
+
+                        {% if data != 'id' %}
+
+                            <th> {{ data|capitalize }} </th>
+                            
+                        {% endif %}
+                        
+                    {% endfor %}
+
+                            <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jeu in jeux %}
+
+                    <tr class="align-middle">
+                        <td> {{ jeu.titre }}</td>
+
+                        <td> {{ jeu.description }}</td>
+
+                        <td>
+                           {% if jeu.Img != null %}
+                                    
+                                <div class="col-6 d-none d-lg-block mx-auto">
+                                    <img src="{{ asset('uploads/photos/' ~ jeu.Img) }}" alt="{{ jeu.titre }}" class="col-4 img-responsive" >
+                                </div>
+                            {% else %}
+
+                            <p>Aucune photo</p>
+                            {% endif %}
+                        </td>
+
+                        <td class= "d-flex flex-column"> 
+
+                            
+
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_jeux_edit', {'id': jeu.id}) }}"><i class="bi bi-pencil-fill"></i></a>
+                            </span>
+
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_jeux_delete', {'id': jeu.id}) }}" 
+                                onclick ="return(confirm('Voulez-vous réellement supprimer le jeu n° {{jeu.id }}'));">
+                                <i class="bi bi-trash-fill text-danger"></i></a>
+                            </span>
+                        
+                        </td>
+
+                    </tr>
+                    
+                {% endfor %}
+
+            
+            </tbody> 
+         </table>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    GamesProject | Catégories
+{% endblock %}
+
+{% block body %}
+
+
+    
+
+
+<div id="body_categorie" class="container">
+
+    <h1 class="text-center mt-5 mb-0">Catégories</h1>
+
+    <p class="text-center mt-4">Ici vous pouvez naviguer entre les différentes catégories de jeux disponibles sur notre site</p>
+    
+    <section class="mt-5 d-flex flex-row flex-wrap justify-content-evenly">
+        {% for data in categorie %}
+            <div class="div_disc col-md-4 mb-5">
+                <a href="{{ path('game_pacman') }}">
+                    <div class="disc mx-auto">
+                        <h5 class="disc-text text-center"> {{ data.nom }}</h5> 
+                        <div class="disc1"></div>
+                        <div class="disc2"></div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+
+</div>  
+
+
+
+     
+    
+{% endblock %}

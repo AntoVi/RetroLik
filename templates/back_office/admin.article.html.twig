@@ -1,0 +1,87 @@
+{% extends "base.admin.html.twig" %}
+
+{% block title %}
+    GamesProject | Gestion articles
+{% endblock %}
+
+{% block body %}
+
+    {% for label, messages in app.flashes(['info', 'danger']) %}
+
+        {% for message in messages %}
+        
+
+            <div class="col-6 mx-auto text-center bg-{{ label }} p-3 text-white mb-3 mt-3">
+                {{ message }}
+            </div>
+            
+        {% endfor %}
+    {% endfor %}
+
+    <div class="container-fluid">
+    <h1 class="text-center my-5"> Gestion articles </h1>
+        <span class="fs-4">
+             Ajouter :  
+                <a href="{{ path('game_admin_article_add') }}" class="text-dark " style="text-decoration: none"> 
+                    <i class="bi bi-plus-circle-fill text-success"></i>
+                </a>
+         </span>
+        <table class ="table table-stripped text-center"> 
+            <thead>
+                <tr>
+                    {% for data in table %}
+                        {% if data != 'id' %}
+                            <th> {{ data|capitalize }} </th>
+                        {% endif %}
+                        
+                    {% endfor %}
+
+                    <th> Actions  </th>
+
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for art in article %}
+
+            
+                    <tr class="align-middle">
+
+                        <td> {{ art.titre }} </td>
+
+                        <td> {{ art.contenu }} </td>
+
+                        <td> {{ art.auteur }} </td>
+
+                        <td> {{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }} </td>
+
+                         
+
+
+                        <td class= "d-flex flex-column"> 
+
+                            
+
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_article_edit', {'id': art.id}) }}"><i class="bi bi-pencil-fill"></i></a>
+                            </span>
+
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_article_remove', {'id': art.id}) }}" 
+                                onclick ="return(confirm('Voulez-vous réellement supprimer la catégorie n° {{art.id }}'));">
+                                <i class="bi bi-trash-fill text-danger"></i></a>
+                            </span>
+                        
+                        </td>
+                    
+                    
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        
+        
+        </table>
+        
+</div>
+{% endblock %}

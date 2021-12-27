@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    ProjetGames | Profil
+{% endblock %}
+
+{% block body %}
+
+<main id="fdepageprofil">
+
+<div id="base_profil">
+
+  <div class="col-md-4 mx-auto card shadow-sm mt-5">
+
+   {% for message in app.flashes('success') %}
+
+      <div class="col-4 mx-auto text-center bg-success p-3 text-white mb-3">
+        {{ message }}
+      </div>
+
+    {% endfor %}
+
+      <h5 class ="text-center mt-2" id="titreprofil">Profil</h5>
+
+      {% if app.user.roles.0 == "ROLE_ADMIN" %}
+          <p class= "text-center" id="adminconnexion"> Connecté en tant qu'Admin.</p>
+      {% endif %}
+
+      <hr>
+
+      <div class="card-body">
+
+          <p class="card-text d-flex justify-content-between" id="rubrique">
+            Prénom :  {{ app.user.prenom }}
+          </p>
+
+
+          <p class="card-text d-flex justify-content-between" id="rubrique">
+            Nom :  {{ app.user.nom }}
+          </p>
+
+          <p class="card-text d-flex justify-content-between" id="rubrique">
+            Mail :  {{ app.user.email }}
+          </p>
+
+          <p class="card-text d-flex justify-content-between" id="rubrique">
+            Pseudo :  {{ app.user.pseudo }}
+          </p>
+
+         <a href="{{ path('game_profil_update', {'id': app.user.id}) }}" class="btn text-center" id="modifprofil">Modifier</a>
+
+      </div>
+
+
+
+  </div>
+
+
+</div>
+
+</main>
+
+
+
+{% endblock %}

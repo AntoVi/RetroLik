@@ -1,0 +1,76 @@
+{% extends "base.forum.html.twig" %}
+
+ {% block title %}
+    Retrolik
+ {% endblock %}
+
+ {% block body %}
+
+    {% for message in app.flashes('success') %}
+
+            <div class="col-4 mx-auto text-center bg-success text-center p-3 text-white mb-3 mt-3">
+                {{ message }}
+            </div>
+
+    {% endfor %}
+
+        <table class="table table-stripped text-center mt-5">
+            <tr class="align-middle">
+
+                <h4 class="my-5 text-center">Publié par</h4>
+                <td>
+                    {% if article.user is not empty %}
+                            {{ article.user.prenom }} {{ article.user.nom }}
+                    {% endif %}
+                </td>
+
+                <td>
+                {{article.contenu|raw }}
+                </td>
+
+                <td> {{ article.date|date('d/m/Y') }} le {{ article.date|date('H:i:s') }} </td>
+
+
+            </tr>
+
+        </table>
+            <h2 class="text-center mt-4">Poster un commentaire</h2>
+
+            {% if app.user %}
+
+            {{ form_start(formCommentaires, {'attr': {'class': 'col-7 mx-auto'}}) }}
+
+            {{ form_row(formCommentaires.commentaire) }}
+
+
+            <button type="submit" class="btn btn-outline-primary btn-blog mb-5"> Envoyer </button>
+
+         {{ form_end(formCommentaires) }}
+
+            {% else %}
+                <p class="text-center"><a class="icon-link" href="{{ path('app_login') }}">Identifiez-vous</a> ou <a class="icon-link" href="{{ path('game_inscription') }}">Créer votre compte</a></p>
+            {% endif %}
+
+            <h2 class="text-center mt-4">Commentaires</h2>
+
+                
+            {# article.articles est un ensemble de résultats qui contient tous les commentaires
+            liés à l'article stockés en BDD #}
+
+            <div class="mb-5">
+                {% for data in article.articles %}
+
+                <div class="col-md-6 mx-auto my-2 d-flex flex-column rounded border border-primary ml-2 p-2">
+
+                    <div class="col-4 pl-1 pt-2 mt-2">
+                    publié par <strong>{{ data.auteur }}</strong> <small>(le {{ data.date|date('d/m/Y') }} à {{ data.date|date('H:i:s') }}) : </small>
+                    </div>
+                    <div class="col-6">
+                    {{ data.commentaire|striptags }}
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+ {% endblock %}

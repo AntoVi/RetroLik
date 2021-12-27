@@ -1,0 +1,51 @@
+{% extends "base.forum.html.twig" %}
+
+
+{% block title %}
+    {% if editMode %}
+        Modification article
+    
+    {% else %}
+        Nouvel article 
+     {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center my-5">
+    
+    {% if editMode %}
+        modification article
+    
+    {% else %}
+       
+        Nouvel article 
+     {% endif %}
+     </h1>
+
+    {{ form_start(formArt, {'attr': {'class' : 'col-6 mx-auto' }}) }}
+
+        
+        {{ form_row(formArt.titre) }}
+
+        {{ form_row(formArt.contenu) }}
+
+        {{ form_row(formArt.Category) }}
+
+        
+        
+
+        <button class="btn btn-dark">
+        
+            {% if editMode %}
+                Modifier
+            
+            {% else %}
+                Enregistrer
+            {% endif %}
+
+         </button>
+
+    {{ form_end(formArt) }}
+
+{% endblock %}

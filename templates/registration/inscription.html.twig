@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    GamesProject | Inscription
+{% endblock %}
+
+
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+
+        <div class="col-4 mx-auto text-center bg-success p-3 text-white mb-3">
+          {{ message }}
+        </div>
+
+ {% endfor %}
+
+<div class="container">
+
+    <h1 class="text-center my-5">Inscription</h1>
+
+    {{ form_start(formInscription, {'attr': {'class' : 'col-6 mx-auto'}} ) }}
+
+        {{ form_row(formInscription.prenom) }}
+
+        {{ form_row(formInscription.nom) }}
+
+        {{ form_row(formInscription.email) }}
+
+        {{ form_row(formInscription.pseudo) }}
+
+        {{ form_row(formInscription.password) }}
+
+        <button class="btn btn-outline-dark d-block col-2 mx-auto">S'inscrire</button>
+
+    {{ form_row(formInscription._token) }}
+    {{ form_end(formInscription) }}
+</div>
+{% endblock %}

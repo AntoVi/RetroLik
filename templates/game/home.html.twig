@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  GamesProjet | Bienvenue
+{% endblock %}
+
+{% block body %}
+<div id="blog_home">
+  <div class="p-3 p-md-5 text-center" id="partie1">
+    <div class="filtre_img_bg">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal my-5 text-center" id="titre1">Retrolik</h1>
+        <p class="lead fw-normal my-4" id="titre2">Une expérience immersive</p>
+        <a class="btn my-4" href="{{ path('game_jeux') }}" id="titre3">Insert coins to begin</a>
+      </div>
+      <div class="product-device shadow-sm d-none d-md-block"></div>
+      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+  </div>
+
+  <div class="text-center">
+
+      <h1 class="text-center my-5" id="lastjeux">Derniers jeux consultés</h1>
+
+      <div id="home_body" class="container d-flex justify-content-center bd-highlight mb-3">
+
+            <div class="border border-dark d-flex flex-column carte1">
+              <div class="bg-light w-50 mt-2 border border-dark mx-auto">
+                <h2>Jeu 1</h2>
+                <p>Description</p>
+              </div>
+              <div class="bg-light card-disquette border border-dark mt-5 mb-2 mx-auto">
+              
+              </div>
+            </div>
+
+            {# <div class="p-2 bd-highlight col-sm-4 col-md-4 mx-5" >
+              <div class="my-3 py-3">
+                <h2 class="display-5 text-dark">Jeu1</h2>
+                <p class="lead text-dark">Description1</p>
+              </div>
+              <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+            </div> #}
+
+          </div>
+
+          <div class="my-5">
+            <a href="" class="btn" id="boutonhome">Voir les autres jeux</a>
+          </div>
+
+        
+  </div>
+
+</div>
+{% endblock %}

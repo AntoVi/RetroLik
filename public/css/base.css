@@ -1,0 +1,414 @@
+* {
+  text-decoration: none;
+}
+
+/* VERIFIER A QUOI CA SERT */
+/* .bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+} */
+
+/* @media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+} */
+/* VERIFIER A QUOI CA SERT */
+
+.body_base {
+  min-height: 100vh !important;
+  padding-bottom: 50px !important;
+}
+
+/* HEADER */
+
+#base_nav {
+  height: 60px;
+  font-family: 'Press Start 2P', cursive;
+  background: #562b5f;
+  padding: 0;
+  margin: 0;
+}
+
+#base_nav a {
+  color: white;
+  font-size: 13px;
+  padding: auto 0;
+}
+
+#nav_home:hover {
+  color: #FFFD7A;
+}
+
+.base_ul li a {
+  border: 2px solid transparent;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+
+.base_ul li a:hover {
+  border: 2px solid #FFFD7A;
+}
+
+.nav-item {
+  background: #562b5f;
+  z-index: 10;
+}
+
+
+/* FOOTER */
+.footer {
+  background: #562b5f;
+  bottom: 0;
+  left: 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6em;
+}
+
+.footer div i {
+  font-size: 2em;
+}
+
+/* MAIN */
+
+#blog_home {
+  min-height: 1450px;
+}
+
+#partie1 {
+  background: url("../imgs/bg_site.png");
+  /* background-color: blue; */
+  min-height: 95vh;
+}
+
+#titre1 {
+  background-color: white;
+  border: solid 5px #DA85FC;
+  border-radius: 50px;
+  font-family: 'Press Start 2P', cursive;
+  padding: 20px 20px;
+  z-index: 1;
+}
+
+#titre2 {
+  color: white;
+  background-color: #DA85FC;
+  border: solid 3px #FFFD7A;
+  border-radius: 50px;
+  font-family: 'Alfa Slab One', cursive;
+  z-index: 1;
+}
+
+#titre3 {
+  background-color: white;
+  border: solid 3px #DA85FC;
+  border-radius: 50px;
+  font-family: 'Alfa Slab One', cursive;
+  z-index: 1;
+}
+
+#titre3:hover {
+  background-color: #FFFD7A;
+  border: solid 3px #DA85FC;
+  border-radius: 50px;
+  font-family: 'Alfa Slab One', cursive;
+}
+
+#lastjeux {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.7em;
+}
+
+.carte1 {
+  background-color: #FFFD7A;
+  height: 350px;
+  width: 350px;
+  border-radius: 0 50px 0 0;
+  border-width: 4px !important;
+}
+
+.carte2 {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #DA85FC;
+  height: 350px;
+  width: 350px;
+  border-radius: 0 50px 0 0;
+  border-width: 4px !important;
+}
+
+.card-disquette {
+  height: 12.5em;
+  width: 17.5em;
+}
+
+#boutonhome {
+  background-color: white;
+  border: solid 5px #DA85FC;
+  border-radius: 50px;
+  font-family: 'Press Start 2P', cursive;
+  padding: 20px 20px;
+}
+
+/* Cadre fluo */
+
+.circle {
+  width: 100%;
+  height: auto;
+  /* border-radius: 100%; */
+  box-shadow: 0 1px 0 0 rgba(225, 131, 194, 0.25), 0 -1px 0 0 rgba(165, 181, 222, 0.25), 1px 0 0 0 rgba(225, 131, 194, 0.25), -1px 0 0 0 rgba(165, 181, 222, 0.25), 5px -5px 0 0 rgba(195, 156, 208, 0.5), -5px 5px 0 0 rgba(195, 156, 208, 0.5), 5px 5px 0 0 rgba(255, 105, 180, 0.75), -5px -5px 0 0 rgba(135, 206, 235, 0.75);
+  animation: rotateThis 1s linear infinite;
+}
+
+/*CSS DU LOGIN */
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.3);
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.12) !important;
+  text-align: center;
+}
+
+#btn_login {
+  background: #562b5f;
+  color: white;
+}
+
+#base_login {
+  display: flex;
+  align-items: center;
+  height: 80vh;
+}
+
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+/* PROFIL */
+
+#fdepageprofil {
+  background-image: url("../imgs/torsadeprofil.png");
+}
+
+#base_profil {
+  height: 87vh;
+  display: flex;
+  align-items: center;
+}
+
+#titreprofil {
+  background-color: #FFFD7A;
+  border: solid 5px #DA85FC;
+  border-radius: 50px;
+  font-family: 'Press Start 2P', cursive;
+  padding: 20px 20px;
+}
+
+#adminconnexion {
+  color: #DA85FC;
+  border: solid 3px #FFFD7A;
+  border-radius: 50px;
+  font-family: 'Alfa Slab One', cursive;
+}
+
+#rubrique {
+  font-family: 'Alfa Slab One', cursive;
+}
+
+#modifprofil {
+  font-family: 'Press Start 2P', cursive;
+  color: #DA85FC;
+  border: solid 3px #FFFD7A;
+  border-radius: 50px;
+}
+
+/*CSS DU LOGIN */
+
+
+
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+/* TABS */
+
+h2.inactive {
+  color: #cccccc;
+}
+
+h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid #5fbae9;
+}
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+}
+
+#icon {
+  width: 60%;
+}
+
+/* CSS TEMPLATE CATEGORIE  */
+
+#body_categorie {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.disc:hover {
+  transform: scale(1.1);
+}
+
+.disc {
+  border: 1px solid black;
+  background: linear-gradient(180deg, white, #dbe4eb);
+  border-radius: 100%;
+  height: 250px;
+  width: 250px;
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.disc1 {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid gray;
+  border-radius: 100%;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.disc2 {
+  background: black;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.disc-text {
+  color: gray;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
+
+/* FIN CSS TEMPLATE CATEGORIE */
+
+
+/* TEMPLATE JEUX */
+
+#body_jeux {
+  background-image: url("../imgs/fdecranjeux.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.card_pacman {
+  background-color: #33FFF1;
+  border-width: medium;
+  border-radius: 50px;
+  height: auto;
+}
+
+.textcard1 {
+  font-family: 'Press Start 2P', cursive;
+  color: black;
+}
+
+.textcard2 {
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
+
+.textcard3 {
+  font-family: 'Press Start 2P', cursive;
+  color: black;
+}
+
+.card_pacman:hover {
+  background-color: #5688FF;
+}
+
+.card_snake {
+  background-color: #FF569B;
+  border-width: medium;
+  border-radius: 50px;
+  height: auto;
+}
+
+.card_snake:hover {
+  background-color: #D456FF;
+}
+
+.card_tictactoe {
+  background-color: #FDFF56;
+  border-width: medium;
+  border-radius: 50px;
+  height: auto;
+}
+
+.card_tictactoe:hover {
+  background-color: #FFA056;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
