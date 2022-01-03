@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -55,6 +57,7 @@ class RegistrationController extends AbstractController
             );
 
             $user->setPassword($hash);
+            $user->setAvatar('image-profil.png');
 
             $this->addFlash('success', "Compte crée avec succès");
 
@@ -93,8 +96,14 @@ class RegistrationController extends AbstractController
 
     // Cette route nous conduira sur un nouveau formulaire pour pouvoir modifier les informations persos de son profil sauf le MDP
     #[Route('/profil/{id}/update', name: 'game_profil_update')]
-    public function gameProfilUpdate(User $user, Request $request, EntityManagerInterface $manager ): Response 
+    public function gameProfilUpdate(User $user, Request $request, EntityManagerInterface $manager,SluggerInterface $slugger ): Response 
     {
+
+        if($user)
+        {
+            $photoActuelle = $user->getAvatar();
+        }
+
         $formUpdate = $this->createForm(RegistrationFormType::class, $user, [
             'profilUpdate' => true 
         ]);
@@ -103,8 +112,42 @@ class RegistrationController extends AbstractController
 
         if($formUpdate->isSubmitted() && $formUpdate->isValid())
         {
-            
 
+            // DEBUT Traitement avatar
+
+            $photo = $formUpdate->get('Avatar')->getData();
+
+            if($photo)
+            {
+                $nomOriginePhoto = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $secureNomPhoto = $slugger->slug($nomOriginePhoto);
+
+                $nouveauNomFichier = $secureNomPhoto . '-' . uniqid() . '-' . $photo->guessExtension();
+
+                try
+                {
+                    $photo->move(
+                        $this->getParameter('photo_directory'),
+                        $nouveauNomFichier
+                     );
+                }
+                catch(FileException $e)
+                {
+
+                }
+                $user->setAvatar($nouveauNomFichier);
+            }
+            else 
+            {
+                if(isset($photoActuelle))
+                    $user->setAvatar($photoActuelle);
+                else 
+
+                    $user->setAvatar(null);
+            }
+             
+            // fin Traitement avatar
             $manager->persist($user);
             $manager->flush();
 
@@ -117,7 +160,8 @@ class RegistrationController extends AbstractController
 
         
         return $this->render('registration/profil_update.html.twig', [
-            'formUpdate' => $formUpdate->createView()
+            'formUpdate' => $formUpdate->createView(),
+            'photoActuelle' => $user->getAvatar()
         ]);
 
 

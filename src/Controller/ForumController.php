@@ -115,6 +115,7 @@ class ForumController extends AbstractController
                 // dd($comments);
 
                 $comments->setAuteur( $user->getPrenom() . ' ' . $user->getNom());
+                $comments->setAvatar($user->getAvatar());
                 
                 $manager->persist($comments); 
                 $manager->flush();

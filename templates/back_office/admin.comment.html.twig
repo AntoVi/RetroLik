@@ -46,6 +46,18 @@
 
                     <td> {{ com.date|date('d/m/Y') }} le {{ com.date|date('H:i:s') }}   </td>
 
+                     <td>
+                           {% if com.avatar != null %}
+                                    
+                                <div class="col-6 d-none d-lg-block mx-auto">
+                                    <img src="{{ asset('uploads/photos/' ~ com.avatar) }}" alt="" class="col-4 img-responsive" >
+                                </div>
+                            {% else %}
+
+                            <p>Aucune photo</p>
+                            {% endif %}
+                        </td>
+
                     <td> 
                         <span class="fs-4">
                             <a href="{{ path('game_admin_comment_remove', {'id': com.id}) }}" 

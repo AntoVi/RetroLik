@@ -10,9 +10,9 @@
 
 <div id="base_login">
   <div class="wrapper fadeInDown">
-    <div id="formContent" class="my-5">
+    <div id="formContent">
 
-        <form method="post" class= "col-8 mx-auto">
+        <form method="post" class="col-12 col-sm-8 col-md-8 mx-auto">
 
             <h1 class="h3 mb-3 font-weight-normal">Identifiez vous</h1>
 
@@ -22,8 +22,7 @@
             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token"
-                  value="{{ csrf_token('authenticate') }}"
-            >
+            value="{{ csrf_token('authenticate') }}">
 
             <button id="btn_login" class="btn m-3" type="submit">
               S'identifier

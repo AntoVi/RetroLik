@@ -6,13 +6,11 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container update_profil">
 
-   
+    <h1 id="titre_p_update" class="text-center my-5">Modification profil</h1>
 
-    <h1 class="text-center my-5">Modification profil</h1>
-
-    {{ form_start(formUpdate, {'attr': {'class' : 'col-6 mx-auto'}} ) }}
+    {{ form_start(formUpdate, {'attr': {'class' : 'col-10 col-sm-8 col-md-6 mx-auto'}} ) }}
 
         {{ form_row(formUpdate.prenom) }}
 
@@ -22,9 +20,19 @@
 
         {{ form_row(formUpdate.pseudo) }}
 
+        {{ form_row(formUpdate.Avatar) }}
+        {# Si photoActuelle retourne TRUE, cela veut dire que l'article possède une photo, c'est une
+        modification, alors on entre dans la condition IF et on affiche la photo actuelle de l'article #}
+        {% if photoActuelle %}   
+            
+            <em> Vous pouvez uploader une nouvelle photo si vous souhaitez la modifier </em>
+            <div class="text-center">
+                <img src="{{ asset('uploads/photos/' ~ photoActuelle) }}" alt="" class="col-10 col-sm-8 col-md-10">
+            </div>
        
+        {% endif %}
 
-        <button class="btn btn-outline-dark d-block col-2 mx-auto">Modifier</button>
+        <button class="btn btn-outline-dark d-block col-8 col-sm-6 col-md-4 mx-auto mt-4">Modifier</button>
 
     {{ form_rest(formUpdate) }}
     {{ form_end(formUpdate) }}

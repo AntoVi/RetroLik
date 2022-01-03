@@ -7,10 +7,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -98,7 +100,26 @@ class RegistrationFormType extends AbstractType
                 'constraints' => new NotBlank([
                     'message' => "Merci de saisir un pseudo."
                 ])
-             ]);
+             ])
+
+             ->add('Avatar',FileType::class, [
+                'label' => "Uploader une image",
+                'mapped' => true, // signifie que le champ est associé à une propriété et 
+                // qu'il sera inséré en BDD 
+                'required' => false, 
+                'data_class' => null,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/jpg'
+                        ],
+                        'mimeTypesMessage' => 'Formats autorisés : jpg/jpeg/png'
+                    ])
+                ]
+            ]);
         }
 
         elseif ($options['userBack'] == true) 
@@ -130,4 +151,3 @@ class RegistrationFormType extends AbstractType
         ]);
     }
 }
-

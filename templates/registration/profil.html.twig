@@ -10,30 +10,39 @@
 
 <div id="base_profil">
 
-  <div class="col-md-4 mx-auto card shadow-sm mt-5">
+  <div class="col-11 col-sm-8 col-md-6 mx-auto card shadow-sm">
 
    {% for message in app.flashes('success') %}
 
-      <div class="col-4 mx-auto text-center bg-success p-3 text-white mb-3">
+      <div class="col-8 mx-auto text-center bg-success p-3 text-white mb-3">
         {{ message }}
       </div>
 
     {% endfor %}
 
-      <h5 class ="text-center mt-2" id="titreprofil">Profil</h5>
+      <h5 class ="text-center mb-0 mt-2" id="titreprofil">Profil</h5>
 
       {% if app.user.roles.0 == "ROLE_ADMIN" %}
-          <p class= "text-center" id="adminconnexion"> Connecté en tant qu'Admin.</p>
+        <p class= "text-center m-0"> Connecté en tant qu'admin</p>
       {% endif %}
 
       <hr>
 
       <div class="card-body">
 
+        <p class="card-text d-flex justify-content-between" id="rubrique">
+          {% if app.user.Avatar != null %}
+            <div class="col-10 text-center mx-auto d-block">
+              <img src="{{ asset('uploads/photos/' ~ app.user.Avatar) }}" alt=" " class="col-5 col-sm-6 col-md-6 img-responsive">
+            </div>
+          {% else %}
+            <p> Aucune photo </p>
+          {% endif %}
+          </p>
+
           <p class="card-text d-flex justify-content-between" id="rubrique">
             Prénom :  {{ app.user.prenom }}
           </p>
-
 
           <p class="card-text d-flex justify-content-between" id="rubrique">
             Nom :  {{ app.user.nom }}

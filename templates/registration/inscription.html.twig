@@ -16,11 +16,11 @@
 
  {% endfor %}
 
-<div class="container">
+<div class="container iscrptn_body">
 
-    <h1 class="text-center my-5">Inscription</h1>
+    <h1 class="text-center m-0 py-5">Inscription</h1>
 
-    {{ form_start(formInscription, {'attr': {'class' : 'col-6 mx-auto'}} ) }}
+    {{ form_start(formInscription, {'attr': {'class' : 'form-inscr col-12 col-sm-10 col-md-8 col-lg-6 mx-auto'}} ) }}
 
         {{ form_row(formInscription.prenom) }}
 
@@ -32,7 +32,7 @@
 
         {{ form_row(formInscription.password) }}
 
-        <button class="btn btn-outline-dark d-block col-2 mx-auto">S'inscrire</button>
+        <button class="btn btn-outline-dark d-block col-8 col-sm-6 col-md-3 col-lg-3 mx-auto">S'inscrire</button>
 
     {{ form_row(formInscription._token) }}
     {{ form_end(formInscription) }}

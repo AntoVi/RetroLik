@@ -38,6 +38,11 @@ class Jeux
      */
     private $Img;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Lien;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +92,18 @@ class Jeux
     public function setImg(string $Img): self
     {
         $this->Img = $Img;
+
+        return $this;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->Lien;
+    }
+
+    public function setLien(string $Lien): self
+    {
+        $this->Lien = $Lien;
 
         return $this;
     }
