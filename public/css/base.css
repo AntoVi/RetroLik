@@ -26,10 +26,10 @@
 /* HEADER */
 
 #base_nav {
-  height: 60px;
+  min-height: 1px;
   font-family: 'Press Start 2P', cursive;
   background: #562b5f;
-  padding: 0;
+  padding: 15px 0 15px 0;
   margin: 0;
 }
 
@@ -72,24 +72,28 @@
   font-size: 2em;
 }
 
-/* MAIN */
-
-#blog_home {
-  min-height: 1450px;
+#div_footer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
+
+/* MAIN */
 
 #partie1 {
   background: url("../imgs/bg_site.png");
   /* background-color: blue; */
   min-height: 95vh;
+  padding-top: 10em;
 }
 
 #titre1 {
   background-color: white;
   border: solid 5px #DA85FC;
   border-radius: 50px;
+  font-size: 44px;
   font-family: 'Press Start 2P', cursive;
-  padding: 20px 20px;
+  padding: 20px;
   z-index: 1;
 }
 
@@ -149,17 +153,8 @@
   border: solid 5px #DA85FC;
   border-radius: 50px;
   font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
   padding: 20px 20px;
-}
-
-/* Cadre fluo */
-
-.circle {
-  width: 100%;
-  height: auto;
-  /* border-radius: 100%; */
-  box-shadow: 0 1px 0 0 rgba(225, 131, 194, 0.25), 0 -1px 0 0 rgba(165, 181, 222, 0.25), 1px 0 0 0 rgba(225, 131, 194, 0.25), -1px 0 0 0 rgba(165, 181, 222, 0.25), 5px -5px 0 0 rgba(195, 156, 208, 0.5), -5px 5px 0 0 rgba(195, 156, 208, 0.5), 5px 5px 0 0 rgba(255, 105, 180, 0.75), -5px -5px 0 0 rgba(135, 206, 235, 0.75);
-  animation: rotateThis 1s linear infinite;
 }
 
 /*CSS DU LOGIN */
@@ -187,6 +182,10 @@
   display: flex;
   align-items: center;
   height: 80vh;
+}
+
+.form-inscr {
+  padding-bottom: 25px;
 }
 
 /* STRUCTURE */
@@ -218,14 +217,7 @@
   border: solid 5px #DA85FC;
   border-radius: 50px;
   font-family: 'Press Start 2P', cursive;
-  padding: 20px 20px;
-}
-
-#adminconnexion {
-  color: #DA85FC;
-  border: solid 3px #FFFD7A;
-  border-radius: 50px;
-  font-family: 'Alfa Slab One', cursive;
+  padding: 10px 10px;
 }
 
 #rubrique {
@@ -237,6 +229,15 @@
   color: #DA85FC;
   border: solid 3px #FFFD7A;
   border-radius: 50px;
+}
+
+#titre_p_update {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 17px;
+}
+
+.update_profil {
+  padding-bottom: 40px;
 }
 
 /*CSS DU LOGIN */
@@ -290,7 +291,7 @@ h2.active {
   width: 60%;
 }
 
-/* CSS TEMPLATE CATEGORIE  */
+/* CSS DU TEMPLATE CATEGORIE  */
 
 #body_categorie {
   font-family: 'Press Start 2P', cursive;
@@ -352,26 +353,16 @@ h2.active {
   background-size: cover;
 }
 
+.titrejeux {
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+  color: white;
+}
+
 .card_pacman {
   background-color: #33FFF1;
   border-width: medium;
   border-radius: 50px;
-  height: auto;
-}
-
-.textcard1 {
-  font-family: 'Press Start 2P', cursive;
-  color: black;
-}
-
-.textcard2 {
-  font-family: 'Press Start 2P', cursive;
-  color: white;
-}
-
-.textcard3 {
-  font-family: 'Press Start 2P', cursive;
-  color: black;
 }
 
 .card_pacman:hover {
@@ -382,7 +373,6 @@ h2.active {
   background-color: #FF569B;
   border-width: medium;
   border-radius: 50px;
-  height: auto;
 }
 
 .card_snake:hover {
@@ -393,22 +383,157 @@ h2.active {
   background-color: #FDFF56;
   border-width: medium;
   border-radius: 50px;
-  height: auto;
 }
 
 .card_tictactoe:hover {
   background-color: #FFA056;
 }
 
+@media screen and (max-width: 1024px)
+{
+  /* RESPONSIVE DU TEMPLATE HOME */
 
+  #titre1
+  {
+    font-size: 32px;
+  }
 
+  #boutonhome {
+    font-size: 16px;
+  }
+}
 
+@media screen and (max-width: 768px)
+{
+  /* RESPONSIVE DU TEMPLATE HOME */
 
+  #blog_home {
+    padding-bottom: 90px;
+  }
 
+  #div_jeux {
+    padding-bottom: 100px;
+  }
 
+  #div_footer
+  {
+    flex-direction: column;
+  }
 
+  /* RESPONSIVE DU TEMPLATE LOGIN */
 
+  .form-inscr {
+    padding-bottom: 120px;
+  }
 
+  #base_login {
+    height: 70vh;
+  }
 
+  /* RESPONSIVE DU TEMPLATE PROFIL */
 
-/**/
+  #base_profil {
+    margin-bottom: 80px;
+  }
+
+  .update_profil {
+    padding-bottom: 130px;
+  }
+}
+
+@media screen and (max-width: 660px)
+{
+  /* RESPONSIVE DU TEMPLATE HOME */
+
+  #boutonhome
+  {
+    font-size: 14px;
+  }
+
+  #titre1
+  {
+    font-size: 28px;
+  }
+
+  #titre2
+  {
+    font-size: 16px;
+  }
+
+  #titre3
+  {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 425px)
+{
+  /* RESPONSIVE DU TEMPLATE HOME */
+
+  .carte1
+  {
+    height: 280px;
+    width: 280px;
+  }
+
+  .card-disquette {
+    height: 8.5em;
+    width: 13.5em;
+  }
+
+  #titre1
+  {
+    font-size: 24px;
+  }
+
+  #titre2
+  {
+    font-size: 14px;
+  }
+
+  #titre3
+  {
+    font-size: 11px;
+  }
+
+  /* RESPONSIVE DU TEMPLATE CATEGORIES */
+
+  #titre_ctgrie {
+    font-size: 28px;
+  }
+
+  #para_ctgrie {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 375px)
+{
+  /* RESPONSIVE DU TEMPLATE HOME */
+
+  #boutonhome
+  {
+    font-size: 11px;
+  }
+
+  #titre1
+  {
+    font-size: 20px;
+  }
+
+  #titre2
+  {
+    font-size: 12px;
+  }
+
+  #titre3
+  {
+    font-size: 10px;
+  }
+
+  /* RESPONSIVE DU TEMPLATE CATEGORIES */
+
+  #para_ctgrie {
+    font-size: 12px;
+  }
+}

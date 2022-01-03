@@ -75,6 +75,18 @@ class JeuxType extends AbstractType
                 'class' => Category::class, // On précise de quelle entité vient de ce champ
                 'choice_label' => 'nom' // on définit la valeur qui apparaitra dans la liste déroulante
             ])
+            ->add('lien', TextType::class, [
+                'label' => "Indiquer le lien vers le jeu",
+                'required' => false,
+                'attr' => [
+                    'placeholder' => "Saisir le lien vers le jeu"
+                ],
+                'constraints' => [
+                    new notBlank([
+                        'message' => "Merci de saisir un lien"
+                    ])
+                ]
+            ])
         ;
     }
 

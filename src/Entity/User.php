@@ -61,7 +61,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $article;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Avatar;
 
@@ -211,7 +211,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Avatar;
     }
 
-    public function setAvatar(string $Avatar): self
+    public function setAvatar(?string $Avatar): self
     {
         $this->Avatar = $Avatar;
 

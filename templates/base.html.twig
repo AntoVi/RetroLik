@@ -46,7 +46,7 @@
       <header class="site-header">
 
         <nav class="navbar navbar-expand-lg navbar-dark" id="base_nav">
-          <div class="container">
+          <div class="container col-md-11 col-10 col-sm-10">
             <a class="navbar-brand" id="nav_home" href="{{path('home')}}">Retrolik</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -94,16 +94,18 @@
 
       </header>
 
-      {% block body %}
+      <main>
+        {% block body %}
 
-      {% endblock %}
+        {% endblock %}
+      </main>
 
       <footer class="footer mx-auto py-3 w-100 position-absolute">
-        <div class="container d-flex justify-content-around text-white">
-          <div class="mx-3 text-center col-md-3 p-2">Retrolik &copy; 2021-2022</div>
-          <div class="mx-3 text-center col-md-3 p-2">Mentions légales</div>
-          <div class="mx-3 text-center col-md-3 p-2">CGU</div>
-          <div class="mx-3 text-center col-md-3">
+        <div id="div_footer" class="container text-white">
+          <div class="mx-3 text-center p-2">Retrolik &copy; 2021-2022</div>
+          <div class="mx-3 text-center p-2">Mentions légales</div>
+          <div class="mx-3 text-center p-2">CGU</div>
+          <div class="text-center p-0">
             <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
             <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
             <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>

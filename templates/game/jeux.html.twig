@@ -8,45 +8,60 @@
 
 <body id="body_jeux">
 
-  <div class="card card_pacman mx-auto my-5" style="width: 18rem;">
+<div id="div_jeux">
 
-<div class="img_jeux mt-3 mx-4">
-  <a href=" {{ path('game_pacman') }}"><img class="card-img-top" src="../imgs/pacman.png" alt="Card image cap"></a>
+  <div class="col-9 col-sm-6 col-md-5 col-lg-4 mx-auto my-5">
+    <a href="https://www.google.com/logos/2010/pacman10-i.html">
+      <div class="card card_pacman">
+
+        <div class="img_jeux mt-3 mx-4">
+          <img class="card-img-top" src="../imgs/pacman.png" alt="Card image cap">
+        </div>
+
+        <div class="card-body">
+
+          <p class="titrejeux text-center">PacMan</p>
+
+        </div>
+      </div>
+    </a>
+  </div>
+  
+  <div class="col-9 col-sm-6 col-md-5 col-lg-4 mx-auto my-5">
+    <a href="{{ path('game_snake') }}">
+      <div class="card card_snake">
+
+        <div class="img_jeux mt-3 mx-4">
+          <img class="card-img-top" src="../imgs/snake.png" alt="Card image cap">
+        </div>
+
+        <div class="card-body">
+
+          <p class="titrejeux text-center">Snake</p>
+
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-9 col-sm-6 col-md-5 col-lg-4 mx-auto my-5">
+    <a href="{{ path('game_tictac') }}">
+      <div class="card card_tictactoe">
+
+        <div class="img_jeux mt-3 mx-4">
+          <img class="card-img-top" src="../imgs/tictactoe.png" alt="Card image cap">
+        </div>
+
+        <div class="card-body">
+
+          <p class="titrejeux text-center">Tictactoe</p>
+
+        </div>
+      </div>
+    </a>
+  </div>
+
 </div>
-
-    <div class="card-body">
-
-      <p class="textcard1 text-center">PacMan</p>
-
-    </div>
-  </div>
-
-
-  <div class="card card_snake mx-auto my-5" style="width: 18rem;">
-
-    <div class="img_jeux mt-3 mx-4">
-      <a href=" {{ path('game_snake') }}"><img class="card-img-top" src="../imgs/snake.png" alt="Card image cap"></a>
-    </div>
-
-    <div class="card-body">
-
-      <p class="textcard2 text-center">Snake</p>
-
-    </div>
-  </div>
-
-  <div class="card card_tictactoe mx-auto my-5" style="width: 18rem;">
-
-    <div class="img_jeux mt-3 mx-4">
-      <a href=" {{ path('game_tictac') }}"><img class="card-img-top" src="../imgs/tictactoe.png" alt="Card image cap"></a>
-    </div>
-
-    <div class="card-body">
-
-      <p class="textcard3 text-center">Tictactoe</p>
-
-    </div>
-  </div>
 
 </body>
 
