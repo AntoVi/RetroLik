@@ -21,7 +21,7 @@ class JeuxType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => "Titre de l'article",
+                'label' => "Titre du jeu",
                 'required' => false,
                 'attr' => [
                     'placeholder' => "Saisir le titre du jeu"
@@ -39,19 +39,7 @@ class JeuxType extends AbstractType
                     ])
                 ]
             ])
-            ->add('description', TextareaType::class, [
-                'label' => "Contenu de l'article",
-                'required' => false,
-                'attr' => [
-                    'placeholder' => "Saisir le contenu du catalogue",
-                    'rows' => 10
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => "Merci de saisir un titre de catalogue"
-                    ])
-                ]
-            ])
+            
             ->add('Img',FileType::class, [
                 'label' => "Uploader une image",
                 'mapped' => true, // signifie que le champ est associé à une propriété et 
