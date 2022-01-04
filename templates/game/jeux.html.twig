@@ -1,67 +1,36 @@
 {% extends "base.html.twig" %}
 
 {% block title0 %}
-    GamesProjet | Jeux
+  Retrolik | Jeux
 {% endblock %}
 
 {% block body %}
 
 <body id="body_jeux">
 
-<div id="div_jeux">
+<div id="div_jeux" class="container d-flex flex-wrap justify-content-evenly">
 
-  <div class="col-9 col-sm-6 col-md-5 col-lg-4 mx-auto my-5">
-    <a href="https://www.google.com/logos/2010/pacman10-i.html">
-      <div class="card card_pacman">
+  {% for game in jeu %}
 
-        <div class="img_jeux mt-3 mx-4">
-          <img class="card-img-top" src="../imgs/pacman.png" alt="Card image cap">
+  <div class="my-3 my-sm-4 my-md-5 mx-2">
+    <a href="{{ game.Lien }}">
+      <div class="barre_top"></div>
+      <div class="cartouche">
+        <div id="barres_titre">
+          <div class="part barres"></div>
+          <div class="part barres"></div>
+          <div class="part barres"></div>
+          <div class="part barres"></div>
+          <p class="crtche_titre">{{ game.titre }}</p>
         </div>
-
-        <div class="card-body">
-
-          <p class="titrejeux text-center">PacMan</p>
-
-        </div>
+        <img class="crtche_img" src="{{ asset('uploads/photos/' ~ game.Img) }}" alt="Card image cap">
+        <div class="crtche_triangle"></div>
+        <div class="barre_lat barre_gauche"></div>
+        <div class="barre_lat barre_droite"></div>
       </div>
     </a>
   </div>
-  
-  <div class="col-9 col-sm-6 col-md-5 col-lg-4 mx-auto my-5">
-    <a href="{{ path('game_snake') }}">
-      <div class="card card_snake">
-
-        <div class="img_jeux mt-3 mx-4">
-          <img class="card-img-top" src="../imgs/snake.png" alt="Card image cap">
-        </div>
-
-        <div class="card-body">
-
-          <p class="titrejeux text-center">Snake</p>
-
-        </div>
-      </div>
-    </a>
-  </div>
-
-  <div class="col-9 col-sm-6 col-md-5 col-lg-4 mx-auto my-5">
-    <a href="{{ path('game_tictac') }}">
-      <div class="card card_tictactoe">
-
-        <div class="img_jeux mt-3 mx-4">
-          <img class="card-img-top" src="../imgs/tictactoe.png" alt="Card image cap">
-        </div>
-
-        <div class="card-body">
-
-          <p class="titrejeux text-center">Tictactoe</p>
-
-        </div>
-      </div>
-    </a>
-  </div>
-
-</div>
+{% endfor %}
 
 </body>
 

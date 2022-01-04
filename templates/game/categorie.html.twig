@@ -1,14 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    GamesProject | Catégories
+    Retrolik | Catégories
 {% endblock %}
 
 {% block body %}
-
-
-    
-
 
 <div id="body_categorie" class="container">
 
@@ -19,7 +15,7 @@
     <section class="mt-5 d-flex flex-row flex-wrap justify-content-evenly">
         {% for data in categorie %}
             <div class="div_disc col-md-4 mb-5">
-                <a href="{{ path('game_pacman') }}">
+                <a href="{{ path('game_jeux_cat', {'id': data.id}) }}">
                     <div class="disc mx-auto">
                         <h5 class="disc-text text-center"> {{ data.nom }}</h5> 
                         <div class="disc1"></div>
@@ -32,8 +28,4 @@
 
 </div>  
 
-
-
-     
-    
 {% endblock %}

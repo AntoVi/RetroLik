@@ -10,7 +10,6 @@
 
         {% for message in messages %}
         
-
             <div class="col-6 mx-auto text-center bg-{{ label }} p-3 text-white mb-3 mt-3">
                 {{ message }}
             </div>
@@ -33,55 +32,30 @@
                         {% if data != 'id' %}
                             <th> {{ data|capitalize }} </th>
                         {% endif %}
-                        
                     {% endfor %}
-
                     <th> Actions  </th>
-
-                    
                 </tr>
             </thead>
             <tbody>
                 {% for art in article %}
-
-            
                     <tr class="align-middle">
-
                         <td> {{ art.titre }} </td>
-
                         <td> {{ art.contenu }} </td>
-
                         <td> {{ art.auteur }} </td>
-
                         <td> {{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }} </td>
-
-                         
-
-
-                        <td class= "d-flex flex-column"> 
-
-                            
-
-                            <span class="fs-4">
+                        <td> 
+                            <span class="fs-4 p-1">
                                 <a href="{{ path('game_admin_article_edit', {'id': art.id}) }}"><i class="bi bi-pencil-fill"></i></a>
                             </span>
-
-                            <span class="fs-4">
+                            <span class="fs-4 p-1">
                                 <a href="{{ path('game_admin_article_remove', {'id': art.id}) }}" 
                                 onclick ="return(confirm('Voulez-vous réellement supprimer la catégorie n° {{art.id }}'));">
                                 <i class="bi bi-trash-fill text-danger"></i></a>
                             </span>
-                        
                         </td>
-                    
-                    
                     </tr>
                 {% endfor %}
-
             </tbody>
-        
-        
         </table>
-        
 </div>
 {% endblock %}

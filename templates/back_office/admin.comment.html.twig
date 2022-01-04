@@ -14,69 +14,45 @@
 
     <div class="container-fluid">
     
-    <h1 class ="text-center my-5"> Gestion commentaires </h1>
+        <h1 class ="text-center my-5"> Gestion commentaires </h1>
 
-    <table class="table table-striped text-center">
-        <thead>
-            <tr>
-                {% for data in table %}
-                    {% if data != 'id' %}
-                        
-                        <th>  {{ data|capitalize }}      </th>
-
-                    {% endif %}
-                    
-                {% endfor %}
-
-                <th> Actions </th>
-            
-            </tr>
-        
-        
-        </thead>
-        <tbody>
-
-            {% for com in comment %}
-
-                <tr class="align-middle">
-
-                    <td> {{ com.auteur }}  </td>
-
-                    <td> {{ com.commentaire|raw }}  </td>
-
-                    <td> {{ com.date|date('d/m/Y') }} le {{ com.date|date('H:i:s') }}   </td>
-
-                     <td>
-                           {% if com.avatar != null %}
-                                    
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    {% for data in table %}
+                        {% if data != 'id' %}
+                            <th>{{ data|capitalize }}</th>
+                        {% endif %}
+                    {% endfor %}
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for com in comment %}
+                    <tr class="align-middle">
+                        <td> {{ com.auteur }}  </td>
+                        <td> {{ com.commentaire|raw }}  </td>
+                        <td> {{ com.date|date('d/m/Y') }} le {{ com.date|date('H:i:s') }}   </td>
+                        <td>
+                            {% if com.avatar != null %}
                                 <div class="col-6 d-none d-lg-block mx-auto">
                                     <img src="{{ asset('uploads/photos/' ~ com.avatar) }}" alt="" class="col-4 img-responsive" >
                                 </div>
                             {% else %}
-
                             <p>Aucune photo</p>
                             {% endif %}
                         </td>
-
-                    <td> 
-                        <span class="fs-4">
-                            <a href="{{ path('game_admin_comment_remove', {'id': com.id}) }}" 
-                            onclick ="return(confirm('Voulez-vous réellement supprimer le commentaire n° {{com.id }}'));">
-                            <i class="bi bi-trash-fill text-danger"></i>
-                            </a>
-                        </span>
-                    </td>
-                
-                
-                </tr>
-                
-            {% endfor %}
-        
-        
-        
-        </tbody>
-    </table>
-
+                        <td> 
+                            <span class="fs-4">
+                                <a href="{{ path('game_admin_comment_remove', {'id': com.id}) }}" 
+                                onclick ="return(confirm('Voulez-vous réellement supprimer le commentaire n° {{ com.id }}'));">
+                                    <i class="bi bi-trash-fill text-danger"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-
 {% endblock %}

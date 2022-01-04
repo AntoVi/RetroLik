@@ -2,22 +2,6 @@
   text-decoration: none;
 }
 
-/* VERIFIER A QUOI CA SERT */
-/* .bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-} */
-
-/* @media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-} */
-/* VERIFIER A QUOI CA SERT */
-
 .body_base {
   min-height: 100vh !important;
   padding-bottom: 50px !important;
@@ -123,29 +107,21 @@
 
 #lastjeux {
   font-family: 'Press Start 2P', cursive;
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
 .carte1 {
   background-color: #FFFD7A;
-  height: 350px;
-  width: 350px;
-  border-radius: 0 50px 0 0;
-  border-width: 4px !important;
-}
-
-.carte2 {
-  font-family: 'Press Start 2P', cursive;
-  background-color: #DA85FC;
-  height: 350px;
-  width: 350px;
+  height: 280px;
+  width: 280px;
   border-radius: 0 50px 0 0;
   border-width: 4px !important;
 }
 
 .card-disquette {
-  height: 12.5em;
-  width: 17.5em;
+  height: 10em;
+  width: 12.5em;
+  background-color: white;
 }
 
 #boutonhome {
@@ -155,6 +131,21 @@
   font-family: 'Press Start 2P', cursive;
   font-size: 20px;
   padding: 20px 20px;
+}
+
+.titreCarteHome {
+  text-decoration: none !important;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.3em;
+  color: black;
+}
+
+.cadreDisquetteHome {
+  background: white;
+  height: 150px;
+  width: 150px;
+  border: 4px solid #DA85FC;
+  border-radius: 5px;
 }
 
 /*CSS DU LOGIN */
@@ -243,6 +234,92 @@
 /*CSS DU LOGIN */
 
 
+
+/* CSS CARTOUCHE GAMEBOY */
+
+.cartouche {
+  height: 250px;
+  width: 230px;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 3px 0 0;
+  position: relative;
+}
+
+.crtche_titre {
+  min-height: 1%;
+  width: 80%;
+  background: linear-gradient(#aaa, 20%, #ccc);
+  border: 3px solid #ccc;
+  border-radius: 50px;
+  margin: 20px auto 0;
+  padding: 10px 0;
+  text-align: center;
+  color: #8d8d8d;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -15px;
+}
+
+.part {
+  width: 230px;
+  height: 10px;
+  position: relative;
+}
+
+.barres {
+  background: #aaa;
+  height: 5px;
+  top: 10px;
+  margin-bottom: 5px;
+}
+
+.barre_top {
+  background: #ccc;
+  height: 10px;
+  width: 215px;
+  border-radius: 3px 3px 0 0;
+}
+
+.barre_lat {
+  position: absolute;
+  height: 140px;
+  width: 5px;
+  background: #aaa;
+}
+
+.barre_gauche {
+  left: 0;
+  bottom: 0;
+}
+
+.barre_droite {
+  bottom: 0;
+  right: 0;
+}
+
+.crtche_img {
+  background: white;
+  height: 150px;
+  width: 150px;
+  margin: 25px auto 0;
+  border: 4px solid #B2B2B2;
+  border-radius: 5px;
+}
+
+.crtche_triangle {
+  height: 0;
+  width: 0;
+  margin: 5px auto;
+  border: 0 solid transparent;
+  border-right-width: 15px;
+  border-left-width: 15px;
+  border-top: 15px solid #aaa;
+}
 
 /* STRUCTURE */
 
@@ -420,6 +497,10 @@ h2.active {
     flex-direction: column;
   }
 
+  #lastjeux {
+    font-size: 24px;
+  }
+
   /* RESPONSIVE DU TEMPLATE LOGIN */
 
   .form-inscr {
@@ -464,6 +545,10 @@ h2.active {
   {
     font-size: 14px;
   }
+
+  #lastjeux {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 425px)
@@ -494,6 +579,10 @@ h2.active {
   #titre3
   {
     font-size: 11px;
+  }
+
+  #lastjeux {
+    font-size: 15px;
   }
 
   /* RESPONSIVE DU TEMPLATE CATEGORIES */
@@ -529,6 +618,10 @@ h2.active {
   #titre3
   {
     font-size: 10px;
+  }
+
+  #lastjeux {
+    font-size: 13px;
   }
 
   /* RESPONSIVE DU TEMPLATE CATEGORIES */
