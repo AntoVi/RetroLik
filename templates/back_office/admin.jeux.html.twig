@@ -39,7 +39,7 @@
                         
                     {% endfor %}
 
-                            <th> Actions </th>
+                    <th> Actions </th>
                 </tr>
             </thead>
             <tbody>
@@ -47,8 +47,6 @@
 
                     <tr class="align-middle">
                         <td> {{ jeu.titre }}</td>
-
-                        <td> {{ jeu.description }}</td>
 
                         <td>
                            {% if jeu.Img != null %}
@@ -62,9 +60,9 @@
                             {% endif %}
                         </td>
 
-                        <td class= "d-flex flex-column"> 
+                        <td>{{ jeu.Lien }}</td>
 
-                            
+                        <td>
 
                             <span class="fs-4">
                                 <a href="{{ path('game_admin_jeux_edit', {'id': jeu.id}) }}"><i class="bi bi-pencil-fill"></i></a>
@@ -82,7 +80,6 @@
                     
                 {% endfor %}
 
-            
             </tbody> 
          </table>
 

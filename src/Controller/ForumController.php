@@ -4,12 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Entity\Comment;
-use App\Entity\Category;
 use App\Form\ArticlesType;
 use App\Form\CommentaireType;
-use App\Repository\CommentRepository;
 use App\Repository\ArticlesRepository;
-use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,8 +74,6 @@ class ForumController extends AbstractController
             ]);
         }
 
-
-
         return $this->render('forum/forum.article.form.html.twig', [
             'user' => $user,
             'formArt' => $formArt->createView(),
@@ -89,7 +84,7 @@ class ForumController extends AbstractController
 
 
     #[Route('/forum/article/{id}', name:'forum_show')]
-    public function gameShow( Request $request, EntityManagerInterface $manager, Articles $article ): Response 
+    public function gameShow(Request $request, EntityManagerInterface $manager, Articles $article): Response 
     {
 
         $user = $this->getUser();
@@ -133,7 +128,4 @@ class ForumController extends AbstractController
             'article' => $article
         ]);
     }
-
-    
-    
 }

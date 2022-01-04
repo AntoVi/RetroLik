@@ -2,13 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
 use App\Entity\Category;
-use App\Form\CommentaireType;
 use App\Repository\CategoryRepository;
-use App\Repository\CommentRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
+use App\Repository\JeuxRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,19 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class GameController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(): Response
+    public function index(JeuxRepository $repoJeux): Response
     {
+
+        $dernierjeu = $repoJeux->findAll();
+
         return $this->render('game/home.html.twig', [
             'title' => 'Bienvenue sur GamesProject',
+            'dernierjeu' => $dernierjeu
         ]);
     }
 
     #[Route('/categorie', name: 'game_categorie')]
-    public function gameCategorie(CategoryRepository $repoCateogry): Response
+    public function gameCategorie(CategoryRepository $repoCategory): Response
     {
 
-
-        $categorie = $repoCateogry->findAll();
+        $categorie = $repoCategory->findAll();
 
         // dd($categorie);
 
@@ -38,60 +37,26 @@ class GameController extends AbstractController
     }
 
     #[Route('/jeux', name: 'game_jeux')]
-    public function gameJeux(): Response 
+    public function gameJeux(JeuxRepository $repoJeux): Response
     {
+        $jeu = $repoJeux->findAll();
 
         return $this->render('game/jeux.html.twig',[
-
+            'jeu' => $jeu
         ]);
     }
 
-    #[Route('/snake', name: 'game_snake')]
-    public function gameSnake(CategoryRepository $repoCateogry): Response
+    #[Route('/jeux/{id}', name: 'game_jeux_cat')]
+    public function gameJeuxCat(JeuxRepository $repoJeux, Category $categorie):Response
     {
 
+        if($categorie)
+        {
+            $jeu = $categorie->getJeux();
+        }
 
-        
-
-        // dd($categorie);
-
-        return $this->render('game/snake.html.twig', [
-          
-        ]);
-
-    }
-
-    #[Route('/pacman', name: 'game_pacman')]
-    public function gamePacMan(CategoryRepository $repoCateogry): Response
-    {
-
-
-        
-
-        // dd($categorie);
-
-        return $this->render('game/pacman.html.twig', [
-          
+        return $this->render('game/jeux.html.twig', [
+            'jeu' => $jeu
         ]);
     }
-
-    #[Route('/tictac', name: 'game_tictac')]
-    public function gameTicTacToe(CategoryRepository $repoCateogry): Response
-    {
-
-
-        
-
-        // dd($categorie);
-
-        return $this->render('game/tictactoe.html.twig', [
-          
-        ]);
-    }
-
-    
- 
-
-
-    
 }

@@ -14,37 +14,35 @@
     </div>
   </div>
 
-  <div class="text-center">
+  <div>
 
       <h1 class="text-center my-5" id="lastjeux">Derniers jeux mis en ligne</h1>
 
-      <div id="home_body" class="container d-flex justify-content-center bd-highlight mb-3">
+      <div class="container d-flex flex-wrap justify-content-around">
 
+        {% for game in dernierjeu|slice(0,3) %}
+
+        <div id="home_body" class="bd-highlight text-center mb-3 mx-2">
+          <a href="{{ game.Lien }}" class="text-decoration-none">
             <div class="border border-dark d-flex flex-column carte1">
-              <div class="bg-light w-50 mt-2 border border-dark mx-auto">
-                <h2 class="m-0 py-1">Jeu 1</h2>
-                <p class="m-0 py-1">Description</p>
+              <div class="mt-4 mx-auto border border-dark rounded bg-light">
+                <h2 class="m-0 p-2 titreCarteHome">{{ game.titre }}</h2>
               </div>
-              <div class="bg-light card-disquette border border-dark mt-5 mb-2 mx-auto">
-              
+              <div class="card-disquette border border-dark rounded mt-4 p-1 mb-2 mx-auto">
+                <img class="cadreDisquetteHome" src="{{ asset('uploads/photos/' ~ game.Img) }}" alt="Card image cap">
               </div>
             </div>
+          </a>
+        </div>
 
-            {# <div class="p-2 bd-highlight col-sm-4 col-md-4 mx-5" >
-              <div class="my-3 py-3">
-                <h2 class="display-5 text-dark">Jeu1</h2>
-                <p class="lead text-dark">Description1</p>
-              </div>
-              <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-            </div> #}
+        {% endfor %}
 
-          </div>
+      </div>
 
-          <div class="my-5">
-            <a href="{{ path('game_jeux') }}" class="btn col-10 col-md-8 col-sm-8" id="boutonhome">Voir les autres jeux</a>
-          </div>
+      <div class="my-5 text-center">
+        <a href="{{ path('game_jeux') }}" class="btn col-10 col-md-6 col-sm-6" id="boutonhome">Voir les autres jeux</a>
+      </div>
 
-        
   </div>
 
 </div>

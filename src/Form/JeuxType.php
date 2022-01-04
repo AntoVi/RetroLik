@@ -64,7 +64,8 @@ class JeuxType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
-                            'image/jpg'
+                            'image/jpg',
+                            'image/gif'
                         ],
                         'mimeTypesMessage' => 'Formats autorisés : jpg/jpeg/png'
                     ])

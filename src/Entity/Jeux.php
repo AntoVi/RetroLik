@@ -23,11 +23,6 @@ class Jeux
     private $titre;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    private $description;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="jeux")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -56,18 +51,6 @@ class Jeux
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }
