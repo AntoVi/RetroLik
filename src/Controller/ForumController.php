@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Articles;
 use App\Entity\Comment;
+use App\Entity\Articles;
+use App\Entity\Category;
 use App\Form\ArticlesType;
 use App\Form\CommentaireType;
+use App\Repository\JeuxRepository;
 use App\Repository\ArticlesRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,17 +19,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ForumController extends AbstractController
 {
     #[Route('/forum', name: 'forum')]
-    public function gameCategorie(ArticlesRepository $repoArticle, EntityManagerInterface $manager): Response
+    public function gameCategorie(ArticlesRepository $repoArticle, EntityManagerInterface $manager, CategoryRepository $repoCat): Response
     {
+         // Selection du nom des champs/colonnes
         $table = $manager->getClassMetadata(Articles::class)->getFieldNames();
 
-        $article = $repoArticle->findAll();
+        $article = $repoArticle->findAll(); // Selest * FROM article + FETCH ALL
+
+        $cat = $repoCat->findAll();
 
         // dd($categorie);
 
         return $this->render('forum/forum.html.twig', [
             'table' => $table,
-            'article' => $article
+            'article' => $article,
+            'cat'  => $cat
         ]);
     }
 
@@ -84,7 +91,7 @@ class ForumController extends AbstractController
 
 
     #[Route('/forum/article/{id}', name:'forum_show')]
-    public function gameShow(Request $request, EntityManagerInterface $manager, Articles $article): Response 
+    public function gameShow(Request $request, EntityManagerInterface $manager, Articles $article,): Response 
     {
 
         $user = $this->getUser();
@@ -122,10 +129,40 @@ class ForumController extends AbstractController
                 ]);
         }
 
+        
+
         return $this->render('forum/forum.show.html.twig', [
             'formCommentaires' => $formCommentaires->createView(),
             'user' => $user,
             'article' => $article
+        ]);
+    }
+
+    #[Route('/forum/categorie/{id}', name:'forum_cat')]
+    public function triForum(ArticlesRepository $repoArticle, Category $category): Response
+    {
+        if($category)
+        {
+            $artForum = $repoArticle->findAll();
+
+            // dd($artForum);
+
+            $articleT = [];
+
+            foreach($artForum as $article)
+            {
+                // dd($category->getId());
+                if($article->getCategory()->getId() === $category->getId())
+                {
+                    $articleT[] = $article;
+                    // dd($articleT);
+                }
+                // dd($article);
+            }
+        }
+
+        return $this->render('forum/forum.tri.html.twig', [
+            'article' => $articleT
         ]);
     }
 }

@@ -97,13 +97,15 @@ class BackOfficeController extends AbstractController
     #[Route('/admin/comments/{id}/remove', name: 'game_admin_comment_remove')]
     public function adminComment(CommentRepository $repoComment,EntityManagerInterface $manager, Comment $comRemove = null)
     {
-
+        // Selection du nom des champs/colonnes
         $table = $manager->getClassMetadata(Comment::class)->getFieldNames();
 
         $comment = $repoComment->findAll();
 
         if($comRemove)
         {
+            // Avant de supprimer l'user dans la bdd, on stock son ID afin de l'intégrer dans 
+            // le message addflash une fois la suppression effectué 
             $id = $comRemove->getId();
             
 
