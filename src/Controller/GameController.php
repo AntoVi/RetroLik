@@ -15,7 +15,7 @@ class GameController extends AbstractController
     public function index(JeuxRepository $repoJeux): Response
     {
 
-        $dernierjeu = $repoJeux->findAll();
+        $dernierjeu = $repoJeux->findAll(); // On pioche les derniers jeux ajoutés pour les afficher sur la page home
 
         return $this->render('game/home.html.twig', [
             'title' => 'Bienvenue sur GamesProject',
@@ -27,7 +27,7 @@ class GameController extends AbstractController
     public function gameCategorie(CategoryRepository $repoCategory): Response
     {
 
-        $categorie = $repoCategory->findAll();
+        $categorie = $repoCategory->findAll(); // Select * FROM category + FETCH ALL
 
         // dd($categorie);
 
@@ -37,7 +37,7 @@ class GameController extends AbstractController
     }
 
     #[Route('/jeux', name: 'game_jeux')]
-    public function gameJeux(JeuxRepository $repoJeux): Response
+    public function gameJeux(JeuxRepository $repoJeux, ): Response
     {
         $jeu = $repoJeux->findAll();
 
@@ -47,11 +47,14 @@ class GameController extends AbstractController
     }
 
     #[Route('/jeux/{id}', name: 'game_jeux_cat')]
-    public function gameJeuxCat(JeuxRepository $repoJeux, Category $categorie):Response
+    public function gameJeuxCat(Category $categorie):Response
     {
-
+        // quand l'utilisateur cliquera sur une catégorie  cela déclenchera la condition IF
         if($categorie)
         {
+            // Grace aux relations bi-directgionnelle, lorsque nous selectionnons une catégorie en BDD, cela donne
+            // accès à tous les jeux liés à cette catégorie
+            // GetJeux() -> array multi contenant tous les jeux liés à la catéghorie transmise dans l'URL
             $jeu = $categorie->getJeux();
         }
 
