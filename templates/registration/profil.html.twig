@@ -10,65 +10,40 @@
 
 <div id="base_profil">
 
-  <div class="col-11 col-sm-8 col-md-6 mx-auto card shadow-sm">
+  {% for message in app.flashes('success') %}
 
-   {% for message in app.flashes('success') %}
+    <div class="col-8 mx-auto text-center bg-success p-3 text-white mb-3">
+      {{ message }}
+    </div>
 
-      <div class="col-8 mx-auto text-center bg-success p-3 text-white mb-3">
-        {{ message }}
-      </div>
+  {% endfor %}
 
-    {% endfor %}
-
-      <h5 class ="text-center mb-0 mt-2" id="titreprofil">Profil</h5>
-
+  <div id="card_profil" class="rounded mx-auto shadow p-3">
+    <div>
+      <h5 class="text-center m-0">Profil</h5>
       {% if app.user.roles.0 == "ROLE_ADMIN" %}
-        <p class= "text-center m-0"> Connecté en tant qu'admin</p>
+        <small class="text-center">Connecté en tant qu'admin</small>
       {% endif %}
-
-      <hr>
-
-      <div class="card-body">
-
-        <p class="card-text d-flex justify-content-between" id="rubrique">
-          {% if app.user.Avatar != null %}
-            <div class="col-10 text-center mx-auto d-block">
-              <img src="{{ asset('uploads/photos/' ~ app.user.Avatar) }}" alt=" " class="col-5 col-sm-6 col-md-6 img-responsive">
-            </div>
-          {% else %}
-            <p> Aucune photo </p>
-          {% endif %}
-          </p>
-
-          <p class="card-text d-flex justify-content-between" id="rubrique">
-            Prénom :  {{ app.user.prenom }}
-          </p>
-
-          <p class="card-text d-flex justify-content-between" id="rubrique">
-            Nom :  {{ app.user.nom }}
-          </p>
-
-          <p class="card-text d-flex justify-content-between" id="rubrique">
-            Mail :  {{ app.user.email }}
-          </p>
-
-          <p class="card-text d-flex justify-content-between" id="rubrique">
-            Pseudo :  {{ app.user.pseudo }}
-          </p>
-
-         <a href="{{ path('game_profil_update', {'id': app.user.id}) }}" class="btn text-center" id="modifprofil">Modifier</a>
-
+      <hr class="my-2">
+    </div>
+    <div id="profil_resp">
+      <div class="d-flex p-0 h-100 align-items-center justify-content-center">
+        <img src="{{ asset('uploads/photos/' ~ app.user.avatar) }}" alt="Votre avatar" class="col-8 img-responsive">
       </div>
-
-
-
+      <div class="h-100 ">
+        <div class="d-flex flex-column h-100 mx-auto">
+          <p><small>Prénom : </small><br>{{ app.user.prenom }}</p>
+          <p><small>Nom : </small><br>{{ app.user.nom }}</p>
+          <p><small>Mail : </small><br>{{ app.user.email }}</p>
+          <p><small>Pseudo : </small><br>{{ app.user.pseudo }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto text-center">
+      <a href="{{ path('game_profil_update', {'id': app.user.id}) }}" class="btn text-center"><small>Modifier</small></a>
+    </div>
   </div>
 
-
-</div>
-
 </main>
-
-
 
 {% endblock %}
