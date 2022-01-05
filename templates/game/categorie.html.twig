@@ -6,18 +6,21 @@
 
 {% block body %}
 
-<div id="body_categorie" class="container">
+<body id="bodyCategory">
 
-    <h1 id="titre_ctgrie" class="text-center mt-5 mb-0">Catégories</h1>
+<div id="body_categorie" class="container mt-5">
+
+    <h1 id="titre_ctgrie" class="text-center mb-0 ">Catégories</h1>
 
     <p id="para_ctgrie" class="text-center mt-4">Ici vous pouvez naviguer entre les différentes catégories de jeux disponibles sur notre site</p>
-    
-    <section class="mt-5 d-flex flex-row flex-wrap justify-content-evenly">
+
+    <section id="disc_cat" class="d-flex flex-row flex-wrap justify-content-evenly">
         {% for data in categorie %}
-            <div class="div_disc col-md-4 mb-5">
+
+            <div class="div_disc my-2">
                 <a href="{{ path('game_jeux_cat', {'id': data.id}) }}">
                     <div class="disc mx-auto">
-                        <h5 class="disc-text text-center"> {{ data.nom }}</h5> 
+                        <p class="disc-text text-center col-12 m-0">{{ data.nom }}</p>
                         <div class="disc1"></div>
                         <div class="disc2"></div>
                     </div>
@@ -26,6 +29,8 @@
         {% endfor %}
     </section>
 
-</div>  
+</div>
+
+</body>
 
 {% endblock %}
