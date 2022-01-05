@@ -8,10 +8,24 @@
 #body_forum {
   background: url('../imgs/forum.png');
   height: 87vh;
+  background-position: center;
+  background-size: cover;
 }
 
 #table_forum {
-  background: rgba(255, 249, 249, 0.7) !important;
+  background: #76005D;
+  border: none;
+  border-radius: 50px;
+}
+
+.titreArticleForum {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1em;
+  color: white;
+}
+
+.topic {
+  font-family: 'Press Start 2P', cursive;
 }
 
 #navbar_forum {
@@ -20,9 +34,21 @@
   font-size: 14px;
 }
 
+.liensCat {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5em;
+  color: #FF68DF;
+}
+
+.partie2 {
+  text-align: center;
+}
+
 /* template forum show */
+
 h2 {
   font-family: 'Press Start 2P', cursive;
+
 }
 
 .b-example-divider {
@@ -57,8 +83,21 @@ h2 {
   -moz-user-select: none;
   user-select: none;
 }
-/* FIN DU HEADER */
 
+#base_forumshow {
+  width: 800px;
+  height: 300px;
+}
+
+#base_forumshow div:first-child {
+  padding: 25px;
+}
+
+#base_forumshow img {
+  max-width: unset;
+}
+
+/* FIN CSS TEMPLATE FORUM SHOW */
 
 /* Footer */
 .footer {
@@ -76,5 +115,14 @@ h2 {
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
+  }
+}
+
+/* Responsive du template forum */
+
+@media screen and (max-width: 768px)
+{
+  #commentForum{
+    padding-bottom: 50px;
   }
 }

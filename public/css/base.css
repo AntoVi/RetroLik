@@ -42,7 +42,6 @@
   z-index: 10;
 }
 
-
 /* FOOTER */
 .footer {
   background: #562b5f;
@@ -179,18 +178,6 @@
   padding-bottom: 25px;
 }
 
-/* STRUCTURE */
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
-}
-
 /* PROFIL */
 
 #fdepageprofil {
@@ -229,6 +216,18 @@
 
 .update_profil {
   padding-bottom: 40px;
+}
+
+#card_profil {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  background: white;
+  height: 320px;
+  width: 650px;
+}
+
+#profil_resp {
+  display: flex;
 }
 
 /*CSS DU LOGIN */
@@ -370,8 +369,30 @@ h2.active {
 
 /* CSS DU TEMPLATE CATEGORIE  */
 
+#bodyCategory{
+  background-image: url("../imgs/fdcategory.png");
+  background-position: center;
+  background-size: cover;
+}
+
 #body_categorie {
   font-family: 'Press Start 2P', cursive;
+}
+
+#titre_ctgrie {
+  background-color: white;
+  border-radius: 50px;
+  border: solid 5px #FF359D
+}
+
+#para_ctgrie {
+  background-color: white;
+  border-radius: 50px;
+  border: solid 5px #FF9145
+}
+
+#disc_cat {
+  padding-bottom: 80px !important;
 }
 
 .disc:hover {
@@ -412,11 +433,14 @@ h2.active {
 }
 
 .disc-text {
-  color: gray;
+  color: white;
+  font-size: 18px;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
   position: absolute;
   left: 50%;
-  top: 20%;
+  top: 25%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 /* FIN CSS TEMPLATE CATEGORIE */
@@ -492,11 +516,6 @@ h2.active {
     padding-bottom: 100px;
   }
 
-  #div_footer
-  {
-    flex-direction: column;
-  }
-
   #lastjeux {
     font-size: 24px;
   }
@@ -514,7 +533,7 @@ h2.active {
   /* RESPONSIVE DU TEMPLATE PROFIL */
 
   #base_profil {
-    margin-bottom: 80px;
+    margin-bottom: 30px;
   }
 
   .update_profil {
@@ -549,6 +568,17 @@ h2.active {
   #lastjeux {
     font-size: 20px;
   }
+
+  /* RESPONSIVE TEMPLATE PROFIL */
+
+  #card_profil {
+    height: 500px;
+    width: 400px;
+  }
+
+  #profil_resp {
+    flex-direction: column !important;
+  }
 }
 
 @media screen and (max-width: 425px)
@@ -559,11 +589,6 @@ h2.active {
   {
     height: 280px;
     width: 280px;
-  }
-
-  .card-disquette {
-    height: 8.5em;
-    width: 13.5em;
   }
 
   #titre1
@@ -593,6 +618,13 @@ h2.active {
 
   #para_ctgrie {
     font-size: 16px;
+  }
+
+  /* RESPONSIVE TEMPLATE PROFIL */
+
+  #card_profil {
+    height: 500px;
+    width: 350px;
   }
 }
 
@@ -628,5 +660,12 @@ h2.active {
 
   #para_ctgrie {
     font-size: 12px;
+  }
+  
+  /* RESPONSIVE TEMPLATE PROFIL */
+
+  #card_profil {
+    height: 500px;
+    width: 300px;
   }
 }
