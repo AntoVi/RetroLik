@@ -61,9 +61,9 @@
                     <a class="nav-link" href="{{ path('forum') }}">Forum</a>
                   </li>
                   <li class="nav-item">
-                    {% if app.user %}
+                    {% if app.user %} {# Si l'utilisateur est connecté il aura accès à la page 'Profil' #}
                     <a class="nav-link" aria-current="page" href="{{path('game_profil')}}">Profil</a>
-                    {% else %}
+                    {% else %} {# Sinon il verra la page "S'inscrire" #}
                     <a class="nav-link"  href="{{path('game_inscription')}}">S'inscrire</a>
                     {% endif %}
                   </li>
@@ -72,15 +72,15 @@
               <div class="me-0">
                 <ul class="navbar-nav mb-2 mb-md-0 base_ul">
                   <li class="nav-item">
-                    {% if is_granted('ROLE_ADMIN')  %}
-                      <a class="nav-link" href="{{path('game_admin')}}"><i class="bi bi-door-open fs-6"></i> BackOffice</a>
-                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %} {# Si l'utilisateur dispose du rôle admin, il aura accès au BackOffice #}
+                      <a class="nav-link" href="{{path('game_admin')}}">BackOffice</a>
+                    {% endif %} {# Sinon il n'y aura pas accès #}
                   </li>
                   <li class="nav-item">
-                    {% if app.user  %}
-                      <a class="nav-link" href="{{path('app_logout')}}"><i class="bi bi-box-arrow-right fs-6"></i> Déconnexion</a>
-                    {% else %}
-                      <a class="nav-link" href="{{path('app_login')}}"><i class="bi bi-box-arrow-in-right fs-6"></i> Se connecter</a>
+                    {% if app.user  %} {# Si l'utilisateur est connecté, il pourra se deconnecter #}
+                      <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+                    {% else %} {# Sinon il pourra se connecter #}
+                      <a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
                     {% endif %}
                   </li>
                 </ul>
@@ -98,7 +98,7 @@
       </main>
 
       <footer class="footer mx-auto py-3 w-100 position-absolute">
-        <div id="div_footer" class="container d-flex justify-content-around text-white">
+        <div id="div_footer" class="container d-flex flex-wrap justify-content-evenly text-white">
           <div class="mx-3 text-center p-2"><a href="#" class="text-white">Retrolik &copy; 2021-2022</a></div>
           <div class="mx-3 text-center p-2"><a href="#" class="text-white">Mentions légales</a></div>
           <div class="mx-3 text-center p-2"><a href="#" class="text-white">CGU</a></div>
