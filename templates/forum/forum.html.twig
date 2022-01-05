@@ -9,9 +9,9 @@
     <div class="partie1 col-6">
 
       {% if app.user %}
-        <span class="fs-4 text-white">
-          Créer un topic :  
-          <a href="{{ path('forum_add_article') }}" class="text-dark " style="text-decoration: none"> 
+        <span class="fs-4 text-black topic">
+          Créer un topic :
+          <a href="{{ path('forum_add_article') }}" class="text-dark" style="text-decoration: none">
             <i class="bi bi-plus-circle-fill text-success"></i>
           </a>
         </span>
@@ -21,14 +21,11 @@
       <table class="table text-center" id="table_forum">
           <tr>
             {% for data in table %}
-              {% if data != 'id' %}
-              {% if data != 'contenu' %}
-              
-                <th>
-                  {{ data|capitalize }} 
-                  
+              {% if data != 'id' and data != 'contenu' %}
+
+                <th class="border-0 titreArticleForum">
+                  {{ data|capitalize }}
                 </th>
-              {% endif %}
 
               {% endif %}
 
@@ -36,27 +33,34 @@
 
           </tr>
 
-            {% for art in article %}
+        {% for art in article %}
 
           <tr>
 
-                <td><a href="{{ path('forum_show', {'id': art.id}) }}"> {{ art.titre }} </a></td>
+            <td class="text-white"><a class="text-white" href="{{ path('forum_show', {'id': art.id}) }}"> {{ art.titre }} </a></td>
 
-                <td>{{ art.auteur }}</td>
+            <td class="text-white">{{ art.auteur }}</td>
 
-                <td>{{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }}</td>
+            <td class="text-white">{{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }}</td>
 
           </tr>
 
-          {% endfor %}
+        {% endfor %}
 
       </table>
     </div>
 
     <div class="partie2 col-6 h-100">
-      <p class="text-center text-white">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      </p>
+
+      <span class="fs-4 text-black topic">
+      Catégories : <br>
+
+      {% for art2 in cat %}
+      <a class="liensCat" href="{{ path('forum_cat', {'id': art2.id }) }}">{{ art2.nom }}<br></a>
+      {% endfor %}
+
+      </span>
+
     </div>
 
   </main>

@@ -1,0 +1,15 @@
+{% extends "forum/forum.html.twig" %}
+
+{% block title %}
+    Retrolik | Forum
+{% endblock %}
+
+{% block body %}
+    {% for data in article %}
+        <pre>
+            {{ dump(data) }}
+        </pre>
+
+        <p>{{ data.titre }}</p>
+    {% endfor %}
+{% endblock %}
