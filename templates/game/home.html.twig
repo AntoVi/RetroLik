@@ -20,7 +20,7 @@
 
       <div class="container d-flex flex-wrap justify-content-around">
 
-        {% for game in dernierjeu|slice(0,3) %}
+        {% for game in dernierjeu|slice(0,3) %} {# ici on boucle afin de faire apparaître les 3 derniers jeux ajoutés #}
 
         <div id="home_body" class="bd-highlight text-center mb-3 mx-2">
           <a href="{{ game.Lien }}" class="text-decoration-none">
