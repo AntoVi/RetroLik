@@ -1,10 +1,10 @@
 {% extends "base.forum.html.twig" %}
 
- {% block title %}
-    Retrolik
- {% endblock %}
+{% block title %}
+Retrolik
+{% endblock %}
 
- {% block body %}
+{% block body %}
 
     {% for message in app.flashes('success') %}
 
@@ -14,81 +14,79 @@
 
     {% endfor %}
 
-        <table class="table table-stripped text-center mt-5">
-            <tr class="align-middle">
+    {% for data in article.articles %}
 
-                <h4 class="my-5 text-center">Publié par</h4>
-                <td>
-                    {% if article.user is not empty %}
-                            {{ article.user.prenom }} {{ article.user.nom }}
-                    {% endif %}
-                </td>
+    <div id="base_forumshow" class="shadow rounded mx-auto d-flex mt-5">
+      <div class="col-4 h-100 d-flex flex-column justify-content-column align-items-center p-4">
+        {% if data.avatar != null %}
+            <img src="{{ asset('uploads/photos/' ~ data.avatar) }}"
+            alt="Avatar" class="col-10 border rounded-circle">
+        {% else %}
+            <p>Pas d'image</p>
+        {% endif %}
+        <h5 class="text-center my-1">Victorien MASSICOT</h5>
+      </div>
+      <div class="col-8">
+        <small>Commentaire posté le {{ article.date|date('d/m/Y') }} à {{ article.date|date('H:i:s') }}</small>
+        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iste, maxime eius sed recusandae voluptatum eveniet delectus, temporibus accusantium error ex officia laborum saepe. Autem eius non vitae mollitia nostrum?</p>
+        </div>
+      </div>
+    </div>
 
-                <td>
-                {{article.contenu|raw }}
-                </td>
+    {% endfor %}
 
-                <td> {{ article.date|date('d/m/Y') }} le {{ article.date|date('H:i:s') }} </td>
+    <h2 class="text-center mt-4">Poster un commentaire</h2>
 
+    {% if app.user %}
 
-            </tr>
+    {{ form_start(formCommentaires, {'attr': {'class': 'col-7 mx-auto'}}) }}
 
-        </table>
-            <h2 class="text-center mt-4">Poster un commentaire</h2>
-
-            {% if app.user %}
-
-            {{ form_start(formCommentaires, {'attr': {'class': 'col-7 mx-auto'}}) }}
-
-            {{ form_row(formCommentaires.commentaire) }}
+    {{ form_row(formCommentaires.commentaire) }}
 
 
-            <button type="submit" class="btn btn-outline-primary btn-blog mb-5"> Envoyer </button>
+    <button type="submit" class="btn btn-outline-primary btn-blog mb-5"> Envoyer </button>
 
-         {{ form_end(formCommentaires) }}
+    {{ form_end(formCommentaires) }}
 
-            {% else %}
-                <p class="text-center"><a class="icon-link" href="{{ path('app_login') }}">Identifiez-vous</a> ou <a class="icon-link" href="{{ path('game_inscription') }}">Créer votre compte</a></p>
-            {% endif %}
+    {% else %}
+        <p class="text-center"><a class="icon-link" href="{{ path('app_login') }}">Identifiez-vous</a> ou <a class="icon-link" href="{{ path('game_inscription') }}">Créer votre compte</a></p>
+    {% endif %}
 
-            <h2 class="text-center mt-4">Commentaires</h2>
+    <h2 class="text-center mt-4">Commentaires</h2>
 
-                
-            {# article.articles est un ensemble de résultats qui contient tous les commentaires
-            liés à l'article stockés en BDD #}
+        
+    {# article.articles est un ensemble de résultats qui contient tous les commentaires
+    liés à l'article stockés en BDD #}
 
-            <div class="mb-5">
-                {% for data in article.articles %}
-                
-                 
-               
-                <div class="col-md-6 mx-auto my-2 d-flex flex-column rounded border border-primary ml-2 p-2">
+    <div class="mb-5">
+        {% for data in article.articles %}
 
-                    <div class="col-4 pl-1 pt-2 mt-2">
-                    
-                    <div class="d-flex"> 
+            <div class="col-md-6 mx-auto my-2 d-flex flex-column rounded border border-dark">
 
-                        {% if data.avatar != null %}
-                            <div class="col-8">
-                                <img src="{{ asset('uploads/photos/' ~ data.avatar) }}" 
-                                alt=" " class="col-12 img-responsive" >
-                            </div>
-                        {% else %}
-                            <p> Pas d'image </p>
-                        {% endif %}    
-                        <strong>{{ data.auteur }}</strong>
-                        
-                      </div>
+                <div class="col-4 pl-1 pt-2 mt-2">
 
-                       <small>(le {{ data.date|date('d/m/Y') }} à {{ data.date|date('H:i:s') }})  </small> 
-                    </div>
-                    <hr>
-                    <div class="col-6">
-                    {{ data.commentaire|striptags }}
+                <div class="d-flex"> 
+
+                    {% if data.avatar != null %}
+                        <div class="col-8">
+                            <img src="{{ asset('uploads/photos/' ~ data.avatar) }}" 
+                            alt=" " class="col-12 img-responsive" >
+                        </div>
+                    {% else %}
+                        <p> Pas d'image </p>
+                    {% endif %}    
+                    <strong>{{ data.auteur }}</strong>
+
                     </div>
 
+                    <small>(le {{ data.date|date('d/m/Y') }} à {{ data.date|date('H:i:s') }})  </small> 
                 </div>
-                {% endfor %}
+                <hr>
+                <div class="col-6">
+                    {{ data.commentaire|striptags }}
+                </div>
             </div>
-
- {% endblock %}
+        {% endfor %}
+    </div>
+{% endblock %}
