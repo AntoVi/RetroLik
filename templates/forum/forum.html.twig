@@ -5,20 +5,19 @@
 {% endblock %}
 
 {% block body %}
-  <main class="d-flex flex-column flex-md-row justify-content-between mx-auto p-4" id="body_forum">
-    <div class="partie1 col-6">
+  <main class="d-flex flex-row flex-wrap mx-auto p-4" id="body_forum">
+    <div id="div_page_forum" class="col-12 col-md-6 col-sm-12">
 
       {% if app.user %}
         <span class="fs-4 text-black topic">
-          Créer un topic :
-          <a href="{{ path('forum_add_article') }}" class="text-dark" style="text-decoration: none">
-            <i class="bi bi-plus-circle-fill text-success"></i>
+          <a id="creerTopic" href="{{ path('forum_add_article') }}" class="btn btn-success d-block col-10 col-sm-8 col-md-8 mx-auto my-2" style="text-decoration: none">
+            Créer un article
           </a>
         </span>
       {% endif %}
 
 
-      <table class="table text-center" id="table_forum">
+      <table class="table text-center table_forum">
           <tr>
             {% for data in table %}
               {% if data != 'id' and data != 'contenu' %}
@@ -35,13 +34,13 @@
 
         {% for art in article %}
 
-          <tr>
+          <tr class="text-white">
 
-            <td class="text-white"><a class="text-white" href="{{ path('forum_show', {'id': art.id}) }}"> {{ art.titre }} </a></td>
+            <td><a class="text-white" href="{{ path('forum_show', {'id': art.id}) }}"> {{ art.titre }} </a></td>
 
-            <td class="text-white">{{ art.auteur }}</td>
+            <td>{{ art.user.pseudo }}</td>
 
-            <td class="text-white">{{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }}</td>
+            <td>{{ art.date|date('d/m/Y') }} le {{ art.date|date('H:i:s') }}</td>
 
           </tr>
 
@@ -50,9 +49,9 @@
       </table>
     </div>
 
-    <div class="partie2 col-6 h-100">
+    <div class="text-center col-12 col-md-6 col-sm-12 my-2">
 
-      <span class="fs-4 text-black topic">
+      <span class="text-black topic">
       Catégories : <br>
 
       {% for art2 in cat %}

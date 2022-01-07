@@ -10,12 +10,13 @@
   height: 87vh;
   background-position: center;
   background-size: cover;
+  margin-bottom: 110px;
 }
 
-#table_forum {
+.table_forum {
   background: #76005D;
   border: none;
-  border-radius: 50px;
+  border-radius: 40px;
 }
 
 .titreArticleForum {
@@ -36,12 +37,14 @@
 
 .liensCat {
   font-family: 'Press Start 2P', cursive;
-  font-size: 0.5em;
+  font-size: 0.7em;
   color: #FF68DF;
 }
 
-.partie2 {
-  text-align: center;
+/* TEMPLATE FORUM */
+
+#creerTopic {
+  font-size: 12px;
 }
 
 /* template forum show */
@@ -89,6 +92,11 @@ h2 {
   height: 300px;
 }
 
+#base_forumshow h5 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+}
+
 #base_forumshow div:first-child {
   padding: 25px;
 }
@@ -97,9 +105,28 @@ h2 {
   max-width: unset;
 }
 
-/* FIN CSS TEMPLATE FORUM SHOW */
+#titre_forumshow {
+  font-family: 'Press Start 2P', cursive;
+}
 
-/* Footer */
+#forumshow_com {
+  height: 185px;
+  width: 600px;
+}
+
+.imgfs {
+  height: 120px;
+  width: 120px;
+}
+
+/* CSS FORMULAIRE AJOUT ARTICLE FORUM */
+
+.formArticle {
+  padding-bottom: 40px;
+}
+
+/* FOOTER */
+
 .footer {
   bottom: 0;
   left: 0;
@@ -120,9 +147,148 @@ h2 {
 
 /* Responsive du template forum */
 
+@media screen and (max-width: 840px)
+{
+  #base_forumshow {
+    width: 500px;
+  }
+}
+
 @media screen and (max-width: 768px)
 {
   #commentForum{
     padding-bottom: 50px;
+  }
+
+  #titre_forumshow {
+    font-size: 16px;
+  }
+
+  .formArticle {
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 768px)
+{
+  /* RESPONSIVE COMMENTAIRE */
+  #forumshow_com {
+    height: 185px;
+    width: 400px;
+  }
+  
+  .imgfs {
+    height: 120px;
+    width: 120px;
+  }
+
+  /* RESPONSIVE FORUM */
+
+  #body_forum {
+    padding-bottom: 110px;
+  }
+
+  #div_page_forum {
+    padding: unset;
+  }
+}
+
+@media screen and (max-width: 584px)
+{
+  #body_forum {
+    margin-bottom: 250px;
+  }
+}
+
+@media screen and (max-width: 530px)
+{
+  /* RESPONSIVE FORUM SHOW */
+  #base_forumshow {
+    flex-direction: column;
+    width: 350px;
+    height: 500px;
+  }
+
+  #base_forumshow p {
+    text-align: center;
+  }
+
+  /* RESPONSIVE FORMULAIRE AJOUT ARTICLE */
+
+  .formArticle {
+    padding-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 425px)
+{
+  /* RESPONSIVE FORUM SHOW */
+  #forumshow_com {
+    height: 185px;
+    width: 350px;
+  }
+  
+  .imgfs {
+    height: 90px;
+    width: 90px;
+  }
+
+  #table_tri_forum {
+    font-size: 10px;
+  }
+
+  /* RESPONSIVE FORUM */
+
+  .table_forum {
+    font-size: 13px;
+  }
+
+  #creerTopic {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 375px)
+{
+  /* RESPONSIVE TOPIC */
+  #base_forumshow {
+    flex-direction: column;
+    width: 300px;
+  }
+
+  #titre_forumshow {
+    font-size: 14px;
+  }
+
+  /* RESPONSIVE COMMENTAIRE */
+
+  #forumshow_com {
+    height: 185px;
+    width: 300px;
+  }
+  
+  .imgfs {
+    height: 90px;
+    width: 90px;
+  }
+
+  #table_tri_forum {
+    font-size: 8px;
+  }
+
+  /* RESPONSIVE FORUM */
+
+  .table_forum {
+    font-size: 10px;
+  }
+
+  #body_forum {
+    margin-bottom: 200px;
+  }
+
+  /* RESPONSIVE FORMULAIRE AJOUT ARTICLE */
+
+  .formArticle {
+    padding-bottom: 80px;
   }
 }

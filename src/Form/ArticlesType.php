@@ -50,7 +50,8 @@ class ArticlesType extends AbstractType
                     ])
                 ]
             ])
-            
+            // On définit le champ permettant d'associer une catégorie à l'article dans le formulaire
+            // Ce champ provient d'une autre entité, en gros c la clé étrangère
             ->add('Category', EntityType::class, [
                 'label' => "Choisir une catégorie",
                 'class' => Category::class, // On précise de quelle entité vient de ce champ

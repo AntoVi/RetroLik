@@ -46,7 +46,6 @@ class ForumController extends AbstractController
         {
             $article = new Articles; 
         }
-        
 
         $formArt = $this->createForm(ArticlesType::class, $article);
 
@@ -91,8 +90,27 @@ class ForumController extends AbstractController
 
 
     #[Route('/forum/article/{id}', name:'forum_show')]
-    public function gameShow(Request $request, EntityManagerInterface $manager, Articles $article,): Response 
+    public function gameShow(Request $request, EntityManagerInterface $manager,ArticlesRepository $repoArticle, Articles $article): Response 
     {
+        if($article)
+        {
+            $artshowForum = $repoArticle->findAll();
+
+            // dd($artshowForum);
+
+            $articleF = [];
+
+            foreach($artshowForum as $articleS)
+            {
+                // dd($articleS->getArticles());
+                if($articleS->getId() === $article->getId())
+                {
+                    $articleF[] = $articleS;
+                    // dd($articleS);
+                }
+                // dd($article);
+            }
+        }
 
         $user = $this->getUser();
         // dd($user);
@@ -129,18 +147,21 @@ class ForumController extends AbstractController
                 ]);
         }
 
-        
-
         return $this->render('forum/forum.show.html.twig', [
             'formCommentaires' => $formCommentaires->createView(),
             'user' => $user,
-            'article' => $article
+            'article' => $article,
+            'articleShow' => $articleF,
+            
         ]);
     }
 
     #[Route('/forum/categorie/{id}', name:'forum_cat')]
-    public function triForum(ArticlesRepository $repoArticle, Category $category): Response
+    public function triForum(EntityManagerInterface $manager, ArticlesRepository $repoArticle, Category $category): Response
     {
+        $tableHead = $manager->getClassMetadata(Articles::class)->getFieldNames();
+        // dd($tableHead);
+
         if($category)
         {
             $artForum = $repoArticle->findAll();
@@ -162,7 +183,8 @@ class ForumController extends AbstractController
         }
 
         return $this->render('forum/forum.tri.html.twig', [
-            'article' => $articleT
+            'article' => $articleT,
+            'tableHead' => $tableHead
         ]);
     }
 }

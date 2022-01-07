@@ -16,14 +16,12 @@
     
     {% if editMode %}
         modification article
-    
     {% else %}
-       
         Nouvel article 
      {% endif %}
      </h1>
 
-    {{ form_start(formArt, {'attr': {'class' : 'col-6 mx-auto' }}) }}
+    {{ form_start(formArt, {'attr': {'class' : 'col-10 col-sm-8 col-md-6 mx-auto mb-3 formArticle' }}) }}
 
         
         {{ form_row(formArt.titre) }}
@@ -31,9 +29,6 @@
         {{ form_row(formArt.contenu) }}
 
         {{ form_row(formArt.Category) }}
-
-        
-        
 
         <button class="btn btn-dark">
         
