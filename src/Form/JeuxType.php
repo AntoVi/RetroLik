@@ -21,25 +21,22 @@ class JeuxType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => "Titre du jeu",
+                'label' => "Nom du jeu",
                 'required' => false,
                 'attr' => [
-                    'placeholder' => "Saisir le titre du jeu"
+                    'placeholder' => "Saisir le nom du jeu"
                     
                 ],
                 'constraints' => [
                     new Length([
-                        'min' => 5,
-                        'max' => 50,
-                        'minMessage' => "Titre trop court (min 5 caractères)",
-                        'maxMessage' => "Titre trop long (max 50 caractères)"
+                        'max' => 18,
+                        'maxMessage' => "Nom trop long (max 18 caractères)"
                     ]),
                     new NotBlank([
-                        'message' => "Merci de saisir un titre de jeu"
+                        'message' => "Merci de saisir le nom du jeu"
                     ])
                 ]
             ])
-            
             ->add('Img',FileType::class, [
                 'label' => "Uploader une image",
                 'mapped' => true, // signifie que le champ est associé à une propriété et 
@@ -59,6 +56,8 @@ class JeuxType extends AbstractType
                     ])
                 ]
             ])
+            // On définit le champ permettant d'associer une catégorie à l'article dans le formulaire
+            // Ce champ provient d'une autre entité, en gros c la clé étrangère
             ->add('Category', EntityType::class, [
                 'label' => "Choisir une catégorie",
                 'class' => Category::class, // On précise de quelle entité vient de ce champ

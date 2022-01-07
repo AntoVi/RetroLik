@@ -41,12 +41,16 @@ class CommentaireType extends AbstractType
                 'label' => "Commentaire",
                 'required' => false,
                 'attr' => [
-                    'placeholder' => "Saisir le contenu du commentaire ",
-                    'rows' => 10
+                    'placeholder' => "Saisir le contenu du commentaire",
+                    'rows' => 50
                 ],
                 'constraints' => [
                     new NotBlank([
                         'message' => "Merci de saisir un commentaire"
+                    ]),
+                    new Length([
+                        'max' => 300,
+                        'maxMessage' => "La limite de caractère a été dépassée"
                     ])
                 ]
             ]);
@@ -58,8 +62,8 @@ class CommentaireType extends AbstractType
                 'label' => "Commentaire",
                 'required' => false,
                 'attr' => [
-                    'placeholder' => "Saisir le contenu du commentaire ",
-                    'rows' => 10
+                    'placeholder' => "Saisir le contenu du commentaire",
+                    'rows' => 5
                 ],
                 'constraints' => [
                     new NotBlank([
