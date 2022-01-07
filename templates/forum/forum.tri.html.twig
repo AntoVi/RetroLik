@@ -5,11 +5,33 @@
 {% endblock %}
 
 {% block body %}
-    {% for data in article %}
-        <pre>
-            {{ dump(data) }}
-        </pre>
+    
+<div class="container mx-auto mt-5">
+    <table id="table_tri_forum" class="table table_forum text-center">
+        <tr>
+            {% for data in tableHead %}
+                {% if data != 'id' %}
+                    <th class="border-0 titreArticleForum"> {{ data|capitalize }} 
+                {% endif %}
+        
+            {% endfor %}
+        </tr>
+        {% for art in article %}
+            <tr class = "text-white">
+                <td><a class ="text-white" href = " {{ path('forum_show', {'id':art.id}) }} "> {{art.titre}} </a></td>
+                 <td> {{ art.contenu }} </td>
+                 <td> {{ art.auteur }} </td>
+                 <td> {{ art.date|date('d/m/Y') }} </td>
+            </tr>
+            
+        {% endfor %}
+    </table>
+</div>
 
-        <p>{{ data.titre }}</p>
-    {% endfor %}
+    {# <p>{{ data.titre }}</p>
+    <p>{{ data.contenu }}</p>
+    <p>{{ data.user.pseudo }}</p>
+    <p>{{ data.date|date('d:m:Y') }} à {{ data.date|date('H:i:s') }}</p> #}
+
+    
 {% endblock %}
