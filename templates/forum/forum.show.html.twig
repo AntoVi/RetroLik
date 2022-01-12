@@ -14,22 +14,23 @@ Retrolik
 
     {% endfor %}
 
-    {% for data in article.articles %}
+    {% for value in articleShow %}
+
 
     <div id="base_forumshow" class="shadow rounded mx-auto d-flex mt-5">
       <div class="col-4 h-100 d-flex flex-column justify-content-column align-items-center p-4">
-        {% if data.avatar != null %}
-            <img src="{{ asset('uploads/photos/' ~ data.avatar) }}"
+        {% if value.user.avatar != null %}
+            <img src="{{ asset('uploads/photos/' ~ value.user.avatar) }}"
             alt="Avatar" class="col-10 border rounded-circle">
         {% else %}
             <p>Pas d'image</p>
         {% endif %}
-        <h5 class="text-center my-1">Victorien MASSICOT</h5>
+        <h5 class="text-center my-1"> {{ value.auteur }}</h5>
       </div>
       <div class="col-8">
-        <small>Commentaire posté le {{ article.date|date('d/m/Y') }} à {{ article.date|date('H:i:s') }}</small>
+        <small>Article posté le {{ value.date|date('d/m/Y') }} à {{ value.date|date('H:i:s') }}</small>
         <div class="d-flex flex-column justify-content-center align-items-center h-100">
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iste, maxime eius sed recusandae voluptatum eveniet delectus, temporibus accusantium error ex officia laborum saepe. Autem eius non vitae mollitia nostrum?</p>
+          <p> {{ value.contenu }} </p>
         </div>
       </div>
     </div>
